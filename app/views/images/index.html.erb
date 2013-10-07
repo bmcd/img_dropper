@@ -1,1 +1,9 @@
 <h1>Image Index</h1>
+
+<ul class="image-list group">
+  <% @images.each do |image| %>
+    <li>
+      <img class="image-list-img" src="<%= image.image.url(:thumb) %>">
+    </li>
+  <% end %>
+</ul>

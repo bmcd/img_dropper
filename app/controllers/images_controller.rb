@@ -7,6 +7,7 @@ class ImagesController < ApplicationController
 
   def create
     @image = Image.new(params[:image])
+    @image.user_id = current_user.id if current_user
 
     if @image.save
       redirect_to image_url(@image), notice: "Image uploaded Successfully"
