@@ -8,9 +8,9 @@
 </head>
 <body>
 
-  <%= debug params %>
-  <%= debug session %>
+  <div class="flash-notice"><%= flash.notice %></div>
 
+  <%= link_to "Upload an Image", new_image_url %>
   <%= link_to "Log In", new_session_url unless current_user %>
   <%= link_to "Sign Up", new_user_url unless current_user %>
   <%= button_to "Log out", session_url, method: :delete if current_user %>

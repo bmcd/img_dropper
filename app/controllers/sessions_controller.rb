@@ -20,6 +20,6 @@ class SessionsController < ApplicationController
   def destroy
     destroy_session
 
-    redirect_to :root
+    redirect_to :root, notice: "Come back soon!"
   end
 end
