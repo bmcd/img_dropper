@@ -1,9 +1,9 @@
-<h1>Image Index</h1>
-
-<ul class="image-list group">
+<ul class="image-list">
   <% @images.each do |image| %>
     <li>
-      <img class="image-list-img" src="<%= image.image.url(:thumb) %>">
+      <%= link_to image_tag(image.image.url(:thumb)), image_url(image) %>
     </li>
   <% end %>
 </ul>
+
+<%= render 'upload_box', image: Image.new %>

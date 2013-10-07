@@ -1,9 +1,12 @@
 <h1>Post an Image</h1>
 
+<%= @image.errors.full_messages.to_sentence %>
+
 <%= form_for @image, url: { action: "create" } do |f| %>
-  <%= f.file_field :image %>
-  <%= f.text_field :title %>
-  <%= f.text_area :description %>
+  Upload an image: <%= f.file_field :image %><br>
+  ...or paste a URL: <%= f.text_field :image_url %><br>
+  Title(optional): <%= f.text_field :title %><br>
+  Description(optional): <%= f.text_area :description %>
 
   <%= f.submit "Upload" %>
 <% end %>
