@@ -1,0 +1,9 @@
+<h1>Post an Image</h1>
+
+<%= form_for @image, url: { action: "create" } do |f| %>
+  <%= f.file_field :image %>
+  <%= f.text_field :title %>
+  <%= f.text_area :description %>
+
+  <%= f.submit "Upload" %>
+<% end %>
