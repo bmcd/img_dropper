@@ -34,4 +34,18 @@ ImgurClone::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  #AWS
+  config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_credentials => {
+        :bucket => "imgurCloneDevelopment",
+        :access_key_id => ENV["AWS_ACCESS_KEY_ID"],
+        :secret_access_key => ENV["AWS_SECRET_ACCESS_KEY"],
+        :s3_host_name => 's3-us-west-2.amazonaws.com'
+    }
+  }
+
+  # Paperclip folder
+  Paperclip.options[:command_path] = "/opt/local/bin/"
 end
