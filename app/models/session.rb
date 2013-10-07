@@ -8,6 +8,11 @@ class Session < ActiveRecord::Base
     self.session_token ||= SecureRandom::urlsafe_base64(16)
   end
 
+  def self.find_user(session_token)
+    session = self.find_by_session_token(session_token)
+    session.user if session
+  end
+
   validate :user
   validates :session_token, presence: true
 end

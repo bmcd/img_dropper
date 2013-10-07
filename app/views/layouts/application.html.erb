@@ -8,6 +8,14 @@
 </head>
 <body>
 
+  <%= debug params %>
+  <%= debug session %>
+
+  <%= link_to "Log In", new_session_url unless current_user %>
+  <%= link_to "Sign Up", new_user_url unless current_user %>
+  <%= button_to "Log out", session_url, method: :delete if current_user %>
+  <%= link_to current_user.email, user_url(current_user) if current_user %>
+
 <%= yield %>
 
 </body>
