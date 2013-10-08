@@ -67,6 +67,19 @@ body {
   background: #ecf0f1;
 }
 
+h1 {
+  font-size: 24pt;
+  font-weight: bold;
+  padding: 10px;
+}
+
+h2 {
+  font-size: 18pt;
+  font-weight: bold;
+  padding-bottom: 10px;
+  padding-right: 5px;
+}
+
 div.content {
   padding-top: 57px;
   background: #bdc3c7;
@@ -75,13 +88,34 @@ div.content {
   height: 100%;
 }
 
-
-
-h1 {
-  font-size: 24pt;
-  font-weight: bold;
-  padding: 10px;
+div.image-show {
+  padding: 15px;
+  float: left;
+  width: 600px;
 }
+
+.image-show p {
+  padding: 5px;
+  padding-right: 40px;
+}
+
+.link-box {
+  padding-top: 15px;
+  float: left;
+  width: 280px;
+}
+
+.link-box input {
+  width: 100%;
+}
+
+
+
+
+
+
+
+
 
 .image-list {
   padding: 15px;
@@ -98,6 +132,7 @@ h1 {
   float: right;
   padding: 15px 15px 15px 0;
 }
+
 
 
 

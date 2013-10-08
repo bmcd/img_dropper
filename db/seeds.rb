@@ -13,6 +13,9 @@ User.create(email: "test1@gmail.com", password: 'password', password_confirmatio
 User.create(email: "test2@gmail.com", password: 'password', password_confirmation: 'password')
 
 
-8.times do
-  Image.create(image_url: "http://placekitten.com/#{300 + rand(300)}/#{300 + rand(300)}/", user_id: rand(4))
+20.times do
+  Image.create(title: "This is a Title",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    image_url: "http://placekitten.com/#{300 + rand(300)}/#{300 + rand(300)}/",
+    user_id: rand(4))
 end

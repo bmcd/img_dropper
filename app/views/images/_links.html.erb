@@ -1,0 +1,8 @@
+<div class="link-box">
+  <h3>Link</h3>
+  <input type="text" class="link-input" value="<%= image_url(image) %>" readonly="readonly">
+  <h3>Direct Link</h3>
+  <input type="text" class="link-input" value="<%= image.image.url %>" readonly="readonly">
+  <h3>HTML Embed Code</h3>
+  <input type="text" class="link-input" value='<a href="<%= image_url(image) %>"><img src="<%= image.image.url %>" alt="<%= image.title %>">' readonly="readonly">
+</div>
