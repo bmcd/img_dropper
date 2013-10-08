@@ -133,7 +133,18 @@ div.image-show {
   padding: 15px 15px 15px 0;
 }
 
+.flash-notice {
+  width: 100%;
+  background: #2ecc71;
+  padding-top: 47px;
+  color: white;
+  display: none;
+}
 
+.flash-notice p {
+  margin: 0 auto;
+  padding: 5px;
+}
 
 
 .top-bar a {
@@ -171,4 +182,22 @@ div.image-show {
 
 .top-right > li {
   float: right;
+  position: relative;
+}
+
+.top-bar-dropdown {
+  display: none;
+  background: #34495e;
+  position: absolute;
+  right: 0;
+  top: 47px;
+  padding: 15px;
+}
+
+.top-right.show-login, .top-right.show-signup {
+  background: #34495e;
+}
+
+.show-login .top-bar-dropdown, .show-signup .top-bar-dropdown {
+  display: block;
 }

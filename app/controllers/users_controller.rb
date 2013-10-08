@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     if @user.save
       self.current_user = @user
-      redirect_to user_url(@user), notice: "User Created"
+      redirect_to :back, notice: "User Created"
     else
       render :new
     end
