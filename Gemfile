@@ -25,7 +25,6 @@ end
 gem 'jquery-rails'
 
 group :development do
-  require 'debugger'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'backbone-on-rails'
