@@ -8,7 +8,7 @@ class Image < ActiveRecord::Base
   has_many :album_images
   has_many :albums, through: :album_images
 
-  before_validation :download_remote_image# , if: :image_url_provided?
+  before_validation :download_remote_image, if: :image_url_provided?
 
   has_attached_file :image,
     styles: {
@@ -27,7 +27,7 @@ class Image < ActiveRecord::Base
     size: { in: 0..4.megabytes }
 
   def image_url_provided?
-    !self.image_url.blank?
+    self.image_url && !self.image_url.blank?
   end
 
   def download_remote_image

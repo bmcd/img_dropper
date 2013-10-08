@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
+
 gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
@@ -23,6 +25,7 @@ end
 gem 'jquery-rails'
 
 group :development do
+  require 'debugger'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'backbone-on-rails'
@@ -35,6 +38,8 @@ gem 'paperclip'
 gem 'aws-sdk'
 
 gem 'figaro'
+
+gem 'jquery-ui-rails'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
