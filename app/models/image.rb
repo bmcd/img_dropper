@@ -24,7 +24,7 @@ class Image < ActiveRecord::Base
   validates :image_remote_url, presence: true, if: :image_url_provided?
 
   validates_attachment :image, presence: true,
-    size: { in: 0..4.megabytes }
+    size: { in: 0..1.megabytes }
 
   def ensure_authorization_token
     self.authorization_token ||= SecureRandom::urlsafe_base64(16)
