@@ -1,0 +1,8 @@
+<section class="comment-holder">
+  <div class="comment-body"><%= comment.body %></div>
+    <% user = User.find(comment.user_id) %>
+  <div class="comment-links">
+    <%= link_to user.email, user_url(user) %>
+    <%= link_to "Reply", new_image_comment_url(@image, parent_comment_id: comment.id), class: "comment-reply" %>
+  </div>
+</section>

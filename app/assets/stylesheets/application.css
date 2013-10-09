@@ -172,7 +172,7 @@ div.image-show {
   padding: 15px;
 }
 
-.comment-list li {
+.comment-holder {
   padding: 5px;
 }
 
@@ -215,6 +215,32 @@ div.image-show {
   width: 100px;
   top: 0;
   right: 0;
+}
+
+ul ul {
+  margin-left: 15px;
+}
+
+.comment-body {
+  background: #ecf0f1;
+  padding: 8px;
+  border-bottom: 1px solid #999;
+}
+
+.comment-links {
+  background: #ecf0f1;
+  padding: 2px;
+}
+
+.comment-links a {
+  font-size: 9pt;
+  color: #333;
+  text-decoration: none;
+  padding: 0 5px;
+}
+
+.comment-links a:hover {
+  color: white;
 }
 
 

@@ -1,9 +1,4 @@
-<div class="comment-body"><%= comment.body %></div>
-<% user = User.find(comment.user_id) %>
-<div class="comment-body">
-  <%= link_to user.email, user_url(user) %>
-  <%= link_to "Reply", new_image_comment_url(@image, parent_comment_id: comment.id), class: "comment-reply" %>
-</div>
+<%= render "comments/comment_body", comment: comment %>
 <ul>
   <% comments_by_parent_id[comment.id].each do |comment| %>
     <li>
