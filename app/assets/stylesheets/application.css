@@ -121,6 +121,13 @@ h2 {
   padding-right: 5px;
 }
 
+h3 {
+  font-size: 16pt;
+  font-weight: bold;
+  padding-bottom: 10px;
+  padding-right: 5px;
+}
+
 div.content {
   padding-top: 57px;
   background: #bdc3c7;
@@ -154,6 +161,26 @@ div.image-show {
   clear: both;
 }
 
+.user-image-list {
+  padding: 15px;
+}
+
+.user-image-list-item {
+  clear: left;
+  padding-bottom: 15px;
+  float: left;
+}
+
+.user-image-list-img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.user-image-list-body {
+  display: inline-block;
+  vertical-align: middle;
+  width: 700px;
+}
 
 
 

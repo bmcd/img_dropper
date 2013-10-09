@@ -1,12 +1,14 @@
 <h1><%= @user.email %>'s Page</h1>
 
 
-<ul class="user-image-list #bdc3c7">
+<ul class="user-image-list">
   <% @user.images.each do |image| %>
-    <li>
-      <img class="user-image-list-img" src="<%= image.image.url %>">
-      <h3><%= image.title %></h3>
-      <p><%= image.description %></p>
+    <li class="user-image-list-item">
+      <a href="<%= image_url(image) %>"><img class="user-image-list-img" src="<%= image.image.url(:thumb) %>"></a>
+      <article class="user-image-list-body">
+        <h3><%= image.title %></h3>
+        <p><%= image.description %></p>
+      </article>
     </li>
   <% end %>
 </ul>
