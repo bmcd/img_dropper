@@ -1,5 +1,3 @@
-<h1>Edit your Image</h1>
-
 <%= @image.errors.full_messages.to_sentence %>
 
 <%= render "image", image: @image %>
@@ -17,5 +15,5 @@
   <%= hidden_field_tag(:authorization_token, @token) %>
 
 
-  <%= f.submit "Upload" %>
+  <%= f.submit "Save" %>
 <% end %>
