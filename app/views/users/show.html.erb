@@ -4,6 +4,12 @@
 <ul class="user-image-list">
   <% @user.images.each do |image| %>
     <li class="user-image-list-item">
+      <% if current_user && image.user_id == current_user.id %>
+        <div class="user-image-list-buttons-holder">
+          <%= button_to "Delete", image_url(image), method: :delete, class: "user-image-list-buttons" %>
+          <%= link_to "Edit", edit_image_url(image), class: "user-image-list-buttons" %>
+        </div>
+      <% end %>
       <a href="<%= image_url(image) %>"><img class="user-image-list-img" src="<%= image.image.url(:thumb) %>"></a>
       <article class="user-image-list-body">
         <h3><%= image.title %></h3>

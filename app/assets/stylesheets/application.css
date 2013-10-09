@@ -169,6 +169,7 @@ div.image-show {
   clear: left;
   padding-bottom: 15px;
   float: left;
+  position: relative;
 }
 
 .user-image-list-img {
@@ -186,6 +187,19 @@ div.image-show {
   float: right;
   padding: 5px;
   display: inline;
+}
+
+.user-image-list-buttons {
+  padding: 5px;
+  display: block;
+  float: right;
+}
+
+.user-image-list-buttons-holder {
+  position: absolute;
+  width: 100px;
+  top: 0;
+  right: 0;
 }
 
 
