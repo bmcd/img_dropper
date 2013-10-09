@@ -59,7 +59,11 @@ class ImagesController < ApplicationController
     @image = current_image
 
     if @image.destroy
-      redirect_to :root, notice: "Image Sucessfully Deleted"
+      if request.referer =~ /user/
+        redirect_to :back, notice: "Image Successfully Deleted"
+      else
+        redirect_to :root, notice: "Image Successfully Deleted"
+      end
     else
       redirect_to :back, notice: "Something went wrong."
     end
