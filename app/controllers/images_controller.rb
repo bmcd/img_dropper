@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_filter :ensure_authorization, only: [:edit, :update]
+  before_filter :ensure_authorization, only: [:edit, :update, :destroy]
 
   def new
     @image = Image.new
@@ -55,6 +55,16 @@ class ImagesController < ApplicationController
     end
   end
 
+  def destroy
+    @image = current_image
+
+    if @image.destroy
+      redirect_to :root, notice: "Image Sucessfully Deleted"
+    else
+      redirect_to :back, notice: "Something went wrong."
+    end
+  end
+
   private
 
   def current_image
@@ -64,7 +74,7 @@ class ImagesController < ApplicationController
   def ensure_authorization
     unless (current_user && current_user.id == current_image.user_id) ||
           params[:authorization_token] == current_image.authorization_token
-      redirect_to :root, notice: "You do not have permission to edit that image."
+      redirect_to :root, notice: "You do not have permission."
     end
   end
 end

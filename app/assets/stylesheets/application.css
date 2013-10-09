@@ -182,6 +182,12 @@ div.image-show {
   width: 700px;
 }
 
+.user-image-buttons {
+  float: right;
+  padding: 5px;
+  display: inline;
+}
+
 
 
 
