@@ -62,10 +62,12 @@ table {
   display: table;
 }
 
-body {
+body, html {
   font-family: Arial, sans-serif;
   background: #ecf0f1;
   position: relative;
+  height: 100%;
+  min-height: 100%;
 }
 
 .droppable {
@@ -133,7 +135,7 @@ div.content {
   background: #bdc3c7;
   width: 940px;
   margin: 0 auto;
-  height: 100%;
+  min-height: 100%;
 }
 
 div.image-show {
@@ -205,10 +207,9 @@ div.image-show {
 
 
 
-
 .image-list {
   padding: 15px;
-  width: 640px;
+  width: 600px;
   float: left;
 }
 
@@ -217,9 +218,29 @@ div.image-show {
   padding: 0 10px 10px 0;
 }
 
+.file-field {
+/*  margin: 0 auto;*/
+  display: inline;
+  padding-top: 5px;
+}
+
+.new_image.highlighted {
+  padding: 10px;
+  border: 5px solid white;
+}
+
 .new_image {
   float: right;
-  padding: 15px 15px 15px 0;
+  padding: 15px;
+  background: #7f8c8d;
+  margin: 15px 30px 15px 0;
+  text-align: center;
+}
+
+#new-image-centered {
+  margin: 0 auto;
+  float: none;
+  width: 350px;
 }
 
 .flash-notice {
@@ -248,6 +269,7 @@ div.image-show {
   left: 0;
   width: 100%;
   min-width: 640px;
+  z-index: 99;
 }
 
 .top-bar li {

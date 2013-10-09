@@ -1,8 +1,8 @@
 <%= form_for image, url: { action: "create" }, html: { id: 'new-image' } do |f| %>
-  Upload an image:<br>
-  <%= f.file_field :image %><br>
-  ...or paste a URL:<br>
-  <%= f.text_field :image_url %><br>
+  <h3>Upload an image:</h3>
+  <%= f.file_field :image, class: "file-field" %><br><br>
+  <h3>...or paste a URL:</h3>
+  <%= f.text_field :image_url %><br><br>
 
   <%= f.submit "Upload" %>
 <% end %>

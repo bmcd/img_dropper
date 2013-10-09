@@ -1,12 +1,12 @@
-<h1>Post an Image</h1>
-
 <%= @image.errors.full_messages.to_sentence %>
 
-<%= form_for @image, url: { action: "create" } do |f| %>
-  Upload an image: <%= f.file_field :image %><br>
-  ...or paste a URL: <%= f.text_field :image_url %><br>
-  Title(optional): <%= f.text_field :title %><br>
-  Description(optional): <%= f.text_area :description %>
+<%= form_for @image, url: { action: "create" }, html: { id: 'new-image-centered' } do |f| %>
+  <h3>Upload an image:</h3>
+  <%= f.file_field :image, class: "file-field" %><br><br>
+  <h3>...or paste a URL:</h3>
+  <%= f.text_field :image_url %><br><br>
 
   <%= f.submit "Upload" %>
 <% end %>
+
+
