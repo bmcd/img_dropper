@@ -163,6 +163,19 @@ div.image-show {
   clear: both;
 }
 
+.comment-form {
+  clear: both;
+  padding: 15px;
+}
+
+.comment-list {
+  padding: 15px;
+}
+
+.comment-list li {
+  padding: 5px;
+}
+
 .user-image-list {
   padding: 15px;
 }

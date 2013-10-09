@@ -7,6 +7,7 @@ class Image < ActiveRecord::Base
 
   has_many :album_images
   has_many :albums, through: :album_images
+  has_many :comments
 
   before_validation :download_remote_image, if: :image_url_provided?
 
@@ -42,5 +43,16 @@ class Image < ActiveRecord::Base
     self.image = io
     self.image_remote_url = self.image_url
   rescue # catch url errors with validations instead of exceptions (Errno::ENOENT, OpenURI::HTTPError, etc...)
+  end
+
+  def comments_by_parent_id
+    comment_hash = { nil => [] }
+    comments.each do |comment|
+      comment_hash[comment.parent_comment_id] ||= []
+      comment_hash[comment.id] ||= []
+      comment_hash[comment.parent_comment_id] << comment
+    end
+
+    comment_hash
   end
 end

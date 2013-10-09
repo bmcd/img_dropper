@@ -14,4 +14,5 @@ class User < ActiveRecord::Base
   has_many :sessions
   has_many :images
   has_many :albums
+  has_many :comments
 end

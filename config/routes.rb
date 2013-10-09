@@ -2,7 +2,9 @@ ImgurClone::Application.routes.draw do
   resources :users, only: [:new, :create, :show]
   resource :session, only: [:new, :create, :destroy]
 
-  resources :images
+  resources :images do
+    resources :comments, only: [:new, :create]
+  end
 
   root to: 'images#index'
   # The priority is based upon order of creation:

@@ -34,6 +34,7 @@ class ImagesController < ApplicationController
 
   def show
     @image = current_image
+    @comments_by_parent_id = @image.comments_by_parent_id
 
     render :show
   end

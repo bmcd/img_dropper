@@ -1,0 +1,11 @@
+<form action="<%= image_comments_url(image_id: @image.id) %>" method="post" class="comment-form">
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <textarea name="comment[body]"></textarea>
+
+  <input type="hidden" name="comment[parent_comment_id]" value="<%= parent_comment_id %>">
+
+  <input type="submit" value="Post">
+
+</form>
