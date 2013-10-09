@@ -5,4 +5,8 @@
   <input type="text" class="link-input" value="<%= image.image.url %>" readonly="readonly">
   <h3>HTML Embed Code</h3>
   <input type="text" class="link-input" value='<a href="<%= image_url(image) %>"><img src="<%= image.image.url %>" alt="<%= image.title %>">' readonly="readonly">
+  <% if @token %>
+    <h3 class="deletion-link">Deletion Link</h3>
+    <input type="text" class="link-input" value="<%= 'fill me in later' %>" readonly="readonly">
+  <% end %>
 </div>

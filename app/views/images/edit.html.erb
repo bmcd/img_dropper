@@ -1,12 +1,11 @@
 <h1>Edit your Image</h1>
 
-<%= debug params %>
-
 <%= @image.errors.full_messages.to_sentence %>
 
 <%= render "image", image: @image %>
 
 <%= render "links", image: @image %>
+
 
 <%= form_for @image, url: { action: "update" }, html: { class: "edit-form"} do |f| %>
 
