@@ -1,5 +1,5 @@
 <div class="image-show">
   <h2><%= image.title %></h2>
-  <%= image_tag(image.image.url(:large)) %><br>
+  <%= link_to image_tag(image.image.url(:large)), image.image.url %><br>
   <p><%= image.description %></p>
 </div>
