@@ -1,0 +1,22 @@
+<h1>Edit your Image</h1>
+
+<%= debug params %>
+
+<%= @image.errors.full_messages.to_sentence %>
+
+<%= render "image", image: @image %>
+
+<%= render "links", image: @image %>
+
+<%= form_for @image, url: { action: "update" }, html: { class: "edit-form"} do |f| %>
+
+  Add a Title(optional):<br>
+  <%= f.text_field :title %><br>
+  Add a Description(optional):<br>
+  <%= f.text_area :description %><br>
+
+  <%= hidden_field_tag(:authorization_token, @token) %>
+
+
+  <%= f.submit "Upload" %>
+<% end %>

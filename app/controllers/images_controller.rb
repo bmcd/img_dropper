@@ -1,4 +1,6 @@
 class ImagesController < ApplicationController
+  before_filter :ensure_authorization, only: [:edit, :update]
+
   def new
     @image = Image.new
 
@@ -8,14 +10,18 @@ class ImagesController < ApplicationController
   def create
     params[:image] = { "image"=>params[:image] } if params[:dropped]
     @image = Image.new(params[:image])
-    @image.user_id = current_user.id if current_user
+    if current_user
+      @image.user_id = current_user.id
+    else
+      @image.ensure_authorization_token
+    end
 
     if @image.save
       respond_to do |format|
         format.html do
-          redirect_to image_url(@image), notice: "Image uploaded Successfully"
+          redirect_to edit_image_url(@image, authorization_token: @image.authorization_token), notice: "Image uploaded Successfully"
         end
-        format.json { render json: @image }
+        format.json { render json: @image.to_json }
       end
     else
       render :new
@@ -27,8 +33,38 @@ class ImagesController < ApplicationController
   end
 
   def show
-    @image = Image.find(params[:id])
+    @image = current_image
 
     render :show
+  end
+
+  def edit
+    @image = current_image
+    @token = params[:authorization_token]
+
+    render :edit
+  end
+
+  def update
+    @image = current_image
+
+    if @image.update_attributes(params[:image])
+      redirect_to image_url(@image), notice: "Image successfully edited."
+    else
+      render :edit
+    end
+  end
+
+  private
+
+  def current_image
+    @current_image ||= Image.find(params[:id])
+  end
+
+  def ensure_authorization
+    unless (current_user && current_user.id == current_image.user_id) ||
+          params[:authorization_token] == current_image.authorization_token
+      redirect_to :root, notice: "You do not have permission to edit that image."
+    end
   end
 end

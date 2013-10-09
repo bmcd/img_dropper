@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131007200943) do
+ActiveRecord::Schema.define(:version => 20131009132230) do
 
   create_table "album_images", :force => true do |t|
     t.integer  "image_id"
@@ -35,13 +35,14 @@ ActiveRecord::Schema.define(:version => 20131007200943) do
     t.string   "title"
     t.text     "description"
     t.integer  "user_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "image_remote_url"
+    t.string   "authorization_token"
   end
 
   add_index "images", ["user_id"], :name => "index_images_on_user_id"

@@ -26,6 +26,10 @@ class Image < ActiveRecord::Base
   validates_attachment :image, presence: true,
     size: { in: 0..4.megabytes }
 
+  def ensure_authorization_token
+    self.authorization_token ||= SecureRandom::urlsafe_base64(16)
+  end
+
   def image_url_provided?
     self.image_url && !self.image_url.blank?
   end
@@ -37,6 +41,6 @@ class Image < ActiveRecord::Base
     end
     self.image = io
     self.image_remote_url = self.image_url
-  # rescue # catch url errors with validations instead of exceptions (Errno::ENOENT, OpenURI::HTTPError, etc...)
+  rescue # catch url errors with validations instead of exceptions (Errno::ENOENT, OpenURI::HTTPError, etc...)
   end
 end

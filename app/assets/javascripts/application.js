@@ -78,7 +78,7 @@ function uploadFile(file) {
     contentType: false,
     type: "POST",
     success: function(data) {
-      window.location = "/images/" + data["id"] + "";
+      window.location = "/images/" + data["id"] + "/edit?authorization_token=" + data["authorization_token"];
     }
   })
 }

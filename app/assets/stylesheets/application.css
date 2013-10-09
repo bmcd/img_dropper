@@ -150,7 +150,9 @@ div.image-show {
   width: 100%;
 }
 
-
+.edit-form {
+  clear: both;
+}
 
 
 
