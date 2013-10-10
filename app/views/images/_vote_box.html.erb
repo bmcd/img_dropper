@@ -3,5 +3,5 @@
     <%= button_to "Upvote", up_url, method: :post, class: "upvote" %>
     <%= button_to "Downvote", down_url, method: :post, class: "downvote" %>
   </div>
-  <div class="vote-number"><%= votes %></div>
+  <div class="vote-number"><%= votes || 0 %></div>
 </div>
