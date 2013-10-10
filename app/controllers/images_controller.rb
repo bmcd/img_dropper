@@ -29,7 +29,7 @@ class ImagesController < ApplicationController
   end
 
   def index
-    @images = Image.all
+    @images = Image.includes(:user_image_votes).sort_by { |image| [image.votes, image.created_at] }.reverse
   end
 
   def show
