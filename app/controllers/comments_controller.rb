@@ -21,7 +21,6 @@ class CommentsController < ApplicationController
 
     if @comment.save
       if request.xhr?
-        @comment.votes = 0
         render partial: 'images/comment',
           locals: { image_id: @comment.image_id, comment: @comment, comments_by_parent_id: { @comment.id => []} }
       elsif request.referer =~ /comments/

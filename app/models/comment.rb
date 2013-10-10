@@ -1,6 +1,5 @@
 class Comment < ActiveRecord::Base
   attr_accessible :body, :parent_comment_id, :user_id, :image_id
-  attr_accessor :votes
 
   belongs_to :user
   belongs_to :image
@@ -12,8 +11,4 @@ class Comment < ActiveRecord::Base
     primary_key: :id
 
   validates :user_id, :image_id, :body, presence: true
-
-  # def votes
-  #   self.user_comment_votes.sum(:vote)
-  # end
 end

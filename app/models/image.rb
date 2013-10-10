@@ -68,8 +68,4 @@ class Image < ActiveRecord::Base
 
     comment_hash
   end
-
-  # def votes
-  #   self.user_image_votes.sum(:vote)
-  # end
 end
