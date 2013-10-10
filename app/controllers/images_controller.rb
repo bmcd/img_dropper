@@ -30,11 +30,22 @@ class ImagesController < ApplicationController
   end
 
   def index
-    @images = Image.includes(:user_image_votes).sort_by { |image| [image.votes, image.created_at] }.reverse
+    @images = Image.select("images.*, SUM(user_image_votes.vote) AS votes")
+      .joins("LEFT OUTER JOIN user_image_votes ON user_image_votes.image_id = images.id")
+      .group("images.id")
+    @images.sort_by! do |image|
+      votes = image.votes || "0"
+      [votes.to_i, image.created_at]
+    end.reverse!
   end
 
   def show
-    @image = Image.includes(:comments, :user_image_votes).find(params[:id])
+    @image = Image.includes(:comments)
+      .select("images.*, SUM(user_image_votes.vote) AS votes")
+      .joins("LEFT OUTER JOIN user_image_votes ON user_image_votes.image_id = images.id")
+      .group("images.id")
+      .where("images.id = #{params[:id]}")
+      .first
     @comments_by_parent_id = @image.comments_by_parent_id
 
     render :show

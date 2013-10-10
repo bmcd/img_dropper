@@ -12,7 +12,7 @@ class Comment < ActiveRecord::Base
 
   validates :user_id, :image_id, :body, presence: true
 
-  def votes
-    self.user_comment_votes.sum(:vote)
-  end
+  # def votes
+  #   self.user_comment_votes.sum(:vote)
+  # end
 end
