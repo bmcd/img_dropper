@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131009191257) do
+ActiveRecord::Schema.define(:version => 20131010150627) do
 
   create_table "album_images", :force => true do |t|
     t.integer  "image_id"
@@ -68,6 +68,16 @@ ActiveRecord::Schema.define(:version => 20131009191257) do
   end
 
   add_index "sessions", ["user_id", "session_token"], :name => "index_sessions_on_user_id_and_session_token", :unique => true
+
+  create_table "user_image_votes", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.integer  "image_id",   :null => false
+    t.integer  "vote",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "user_image_votes", ["user_id", "image_id"], :name => "index_user_image_votes_on_user_id_and_image_id", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",           :null => false

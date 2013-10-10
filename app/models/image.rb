@@ -8,6 +8,7 @@ class Image < ActiveRecord::Base
   has_many :album_images
   has_many :albums, through: :album_images
   has_many :comments
+  has_many :user_image_votes
 
   before_validation :download_remote_image, if: :image_url_provided?
 
@@ -47,12 +48,16 @@ class Image < ActiveRecord::Base
 
   def comments_by_parent_id
     comment_hash = { nil => [] }
-    comments.each do |comment|
+    comments.includes(:user).each do |comment|
       comment_hash[comment.parent_comment_id] ||= []
       comment_hash[comment.id] ||= []
       comment_hash[comment.parent_comment_id] << comment
     end
 
     comment_hash
+  end
+
+  def votes
+    self.user_image_votes.sum(:vote)
   end
 end

@@ -33,7 +33,7 @@ class ImagesController < ApplicationController
   end
 
   def show
-    @image = current_image
+    @image = Image.includes(:comments, :user_image_votes).find(params[:id])
     @comments_by_parent_id = @image.comments_by_parent_id
 
     render :show
@@ -67,6 +67,40 @@ class ImagesController < ApplicationController
       end
     else
       redirect_to :back, notice: "Something went wrong."
+    end
+  end
+
+  def upvote
+    image_id = params[:id]
+    user_id = current_user.id
+    @vote = UserImageVote.find_by_user_id_and_image_id(user_id, image_id)
+    if @vote
+      @vote.vote = (@vote.vote == 1 ? 0 : 1)
+    else
+      @vote = UserImageVote.new(user_id: user_id, image_id: image_id, vote: 1)
+    end
+
+    if @vote.save
+      redirect_to :back, notice: "Upvoted Successfully"
+    else
+      redirect_to :back, notice: "Upvote Failed"
+    end
+  end
+
+  def downvote
+    image_id = params[:id]
+    user_id = current_user.id
+    @vote = UserImageVote.find_by_user_id_and_image_id(user_id, image_id)
+    if @vote
+      @vote.vote = (@vote.vote == -1 ? 0 : -1)
+    else
+      @vote = UserImageVote.new(user_id: user_id, image_id: image_id, vote: -1)
+    end
+
+    if @vote.save
+      redirect_to :back, notice: "Upvoted Successfully"
+    else
+      redirect_to :back, notice: "Upvote Failed"
     end
   end
 

@@ -4,6 +4,10 @@ ImgurClone::Application.routes.draw do
 
   resources :images do
     resources :comments, only: [:new, :create]
+    member do
+      post "upvote"
+      post "downvote"
+    end
   end
 
   root to: 'images#index'

@@ -351,3 +351,8 @@ ul ul {
 .show-login .top-bar-dropdown, .show-signup .top-bar-dropdown {
   display: block;
 }
+
+.vote-box {
+  clear: both;
+  padding: 15px;
+}
