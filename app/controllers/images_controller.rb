@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
   before_filter :ensure_authorization, only: [:edit, :update, :destroy]
+  before_filter :require_logged_in!, only: [:upvote, :downvote]
 
   def new
     @image = Image.new

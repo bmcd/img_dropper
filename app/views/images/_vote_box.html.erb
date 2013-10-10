@@ -1,0 +1,7 @@
+<div class="vote-box">
+  <div class="vote-button-holder">
+    <%= button_to "Upvote", up_url, method: :post, class: "upvote" %>
+    <%= button_to "Downvote", down_url, method: :post, class: "downvote" %>
+  </div>
+  <div class="vote-number"><%= votes %></div>
+</div>

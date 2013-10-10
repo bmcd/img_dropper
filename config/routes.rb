@@ -10,6 +10,9 @@ ImgurClone::Application.routes.draw do
     end
   end
 
+  match "/comments/:id/upvote" => "comments#upvote", as: :upvote_comment
+  match "/comments/:id/downvote" => "comments#downvote", as: :downvote_comment
+
   root to: 'images#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -15,4 +15,6 @@ class User < ActiveRecord::Base
   has_many :images
   has_many :albums
   has_many :comments
+  has_many :user_comment_votes
+  has_many :user_image_votes
 end

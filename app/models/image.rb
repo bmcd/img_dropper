@@ -48,10 +48,18 @@ class Image < ActiveRecord::Base
 
   def comments_by_parent_id
     comment_hash = { nil => [] }
-    comments.includes(:user).each do |comment|
+    comments.includes(:user, :user_comment_votes).each do |comment|
       comment_hash[comment.parent_comment_id] ||= []
       comment_hash[comment.id] ||= []
       comment_hash[comment.parent_comment_id] << comment
+    end
+
+
+    comment_hash.each do |key, comment_array|
+      comment_hash[key] =
+        comment_array.sort_by do |comment|
+          [-comment.votes, comment.created_at]
+        end
     end
 
     comment_hash

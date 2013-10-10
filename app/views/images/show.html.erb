@@ -2,11 +2,7 @@
 
 <%= render "links", image: @image %>
 
-<div class="vote-box">
-  <div class="vote-number"><%= @image.votes %></div>
-  <%= button_to "Upvote", upvote_image_url(@image), method: :post, class: "upvote" %>
-  <%= button_to "Downvote", downvote_image_url(@image), method: :post, class: "downvote" %>
-</div>
+<%= render "images/vote_box", up_url: upvote_image_url(@image), down_url: downvote_image_url(@image), votes: @image.votes %>
 
 <%= render "comment_form", parent_comment_id: nil %>
 

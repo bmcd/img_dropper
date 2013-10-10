@@ -227,6 +227,12 @@ ul ul {
   border-bottom: 1px solid #999;
 }
 
+.comment-text {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 800px;
+}
+
 .comment-links {
   background: #ecf0f1;
   padding: 2px;
@@ -354,5 +360,34 @@ ul ul {
 
 .vote-box {
   clear: both;
-  padding: 15px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.upvote {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 15px;
+  height: 15px;
+  background: green;
+}
+
+.downvote {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 15px;
+  height: 15px;
+  background: red;
+}
+
+.vote-button-holder {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.vote-number {
+  display: inline-block;
+  vertical-align: middle;
 }

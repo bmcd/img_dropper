@@ -1,6 +1,11 @@
 <section class="comment-holder">
-  <div class="comment-body"><%= comment.body %></div>
-    <% user = User.find(comment.user_id) %>
+  <div class="comment-body">
+      <%= render "images/vote_box", up_url: upvote_comment_url(comment), down_url: downvote_comment_url(comment), votes: comment.votes %>
+      <div class="comment-text">
+        <%= comment.body %>
+      </div>
+    </div>
+    <% user = comment.user %>
   <div class="comment-links">
     <%= link_to user.email, user_url(user) %>
     <%= link_to "Reply", new_image_comment_url(@image, parent_comment_id: comment.id), class: "comment-reply" %>
