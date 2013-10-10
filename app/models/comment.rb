@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
   attr_accessible :body, :parent_comment_id, :user_id, :image_id
+  attr_accessor :votes
 
   belongs_to :user
   belongs_to :image

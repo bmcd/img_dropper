@@ -1,8 +1,8 @@
-<%= render "comments/comment_body", comment: comment %>
+<%= render "comments/comment_body", image_id: image_id, comment: comment %>
 <ul>
   <% comments_by_parent_id[comment.id].each do |comment| %>
     <li>
-      <%= render "comment", comment: comment, comments_by_parent_id: comments_by_parent_id %>
+      <%= render "comment", image_id: image_id, comment: comment, comments_by_parent_id: comments_by_parent_id %>
     </li>
   <% end %>
 </ul>

@@ -4,12 +4,12 @@
 
 <%= render "images/vote_box", up_url: upvote_image_url(@image), down_url: downvote_image_url(@image), votes: @image.votes %>
 
-<%= render "comment_form", parent_comment_id: nil %>
+<%= render "comment_form", parent_comment_id: nil, image_id: @image.id %>
 
 <ul class="comment-list">
   <% @comments_by_parent_id[nil].each do |comment| %>
     <li>
-      <%= render "comment", comment: comment, comments_by_parent_id: @comments_by_parent_id %>
+      <%= render "comment", image_id: @image.id, comment: comment, comments_by_parent_id: @comments_by_parent_id %>
     </li>
   <% end %>
 </ul>

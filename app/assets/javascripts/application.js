@@ -26,12 +26,29 @@ $(document).ready(function() {
     $(this).parent().toggleClass("show-signup");
   });
 
+  $(".comment-list").on("ajax:success", ".comment-reply", function(event, data) {
+    $(this).click(function (event) { event.preventDefault(); return false;});
+    $(this).after(data);
+  })
+  $(".comment-list").on("ajax:success", ".comment-form", function(event, data) {
+    $li = $("<li></li>").html(data)
+    $(this).closest('li').children('ul').prepend($li);
+    $(this).remove()
+  })
+  $(".content .comment-form").on("ajax:success", function(event, data) {
+    $li = $("<li></li>").html(data)
+    $(".comment-list").prepend($li);
+    $(this).remove();
+  })
+})
+
+function startDNDListening() {
   var dropbox = document.getElementById("body");
   var dropmask = document.getElementById("dropmask")
   dropmask.addEventListener("dragleave", dragExit, false);
   dropbox.addEventListener("dragover", dragOver, false);
   dropbox.addEventListener("drop", drop, false);
-})
+}
 
 function dragExit(event) {
   event.stopPropagation();

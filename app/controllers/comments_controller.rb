@@ -2,11 +2,16 @@ class CommentsController < ApplicationController
   before_filter :require_logged_in!
 
   def new
-    @image = Image.find(params[:image_id])
-    @comment = Comment.new
-    @parent_comment_id = params[:parent_comment_id]
+    if request.xhr?
+      render partial: "images/comment_form",
+        locals: { image_id: params[:image_id], parent_comment_id: params[:parent_comment_id] }
+    else
+      @image = Image.find(params[:image_id])
+      @comment = Comment.new
+      @parent_comment_id = params[:parent_comment_id]
 
-    render :new
+      render :new
+    end
   end
 
   def create
@@ -15,7 +20,11 @@ class CommentsController < ApplicationController
     @comment.image_id = params[:image_id]
 
     if @comment.save
-      if request.referer =~ /comments/
+      if request.xhr?
+        @comment.votes = 0
+        render partial: 'images/comment',
+          locals: { image_id: @comment.image_id, comment: @comment, comments_by_parent_id: { @comment.id => []} }
+      elsif request.referer =~ /comments/
         redirect_to image_url(id: @comment.image_id), notice: "Comment saved"
       else
         redirect_to :back, notice: "Comment saved"
