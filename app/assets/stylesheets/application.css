@@ -358,7 +358,12 @@ ul ul {
   display: block;
 }
 
-.vote-box {
+.content > .vote-box {
+  clear: both;
+  padding: 0 20px;
+}
+
+.comment-list .vote-box {
   clear: both;
   display: inline-block;
   vertical-align: middle;
