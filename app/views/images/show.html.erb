@@ -2,7 +2,7 @@
 
 <%= render "links", image: @image %>
 
-<%= render "images/vote_box", up_url: upvote_image_url(@image), down_url: downvote_image_url(@image), votes: @image.votes %>
+<%= render "images/vote_box", up_url: upvote_image_url(@image), down_url: downvote_image_url(@image), votes: @image.votes, model: @image %>
 
 <%= render "comment_form", parent_comment_id: nil, image_id: @image.id %>
 

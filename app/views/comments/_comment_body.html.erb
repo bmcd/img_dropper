@@ -1,6 +1,6 @@
 <section class="comment-holder">
   <div class="comment-body">
-      <%= render "images/vote_box", up_url: upvote_comment_url(comment), down_url: downvote_comment_url(comment), votes: (comment.respond_to?(:votes) ? comment.votes : 0) %>
+      <%= render "images/vote_box", up_url: upvote_comment_url(comment), down_url: downvote_comment_url(comment), votes: (comment.respond_to?(:votes) ? comment.votes : 0), model: comment %>
       <div class="comment-text">
         <%= comment.body %>
       </div>

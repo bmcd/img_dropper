@@ -376,7 +376,18 @@ ul ul {
   margin: 0;
   width: 15px;
   height: 15px;
-  background: green;
+  background: #27ae60;
+  opacity: 0.4;
+}
+
+.upvote.selected {
+  background: #2ecc71;
+  opacity: 1;
+}
+
+.upvote.selected:hover {
+  background: #27ae60;
+  opacity: 0.4;
 }
 
 .downvote {
@@ -385,8 +396,26 @@ ul ul {
   margin: 0;
   width: 15px;
   height: 15px;
-  background: red;
+  background: #c0392b;
+  opacity: 0.4;
 }
+
+.downvote.selected {
+  background: #e74c3c;
+  opacity: 1;
+}
+
+.downvote.selected:hover {
+  background: #c0392b;
+  opacity: 0.4;
+}
+
+.upvote:hover, .downvote:hover {
+  opacity: 1;
+  font-weight: bold;
+}
+
+
 
 .vote-button-holder {
   display: inline-block;
@@ -407,6 +436,9 @@ ul ul {
   position: absolute;
   top: 0;
   left: 0;
+  background: #95a5a6;
+  opacity: 0.85;
+  color: white;
   display: none;
 }
 

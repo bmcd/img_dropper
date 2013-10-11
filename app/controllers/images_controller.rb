@@ -101,7 +101,8 @@ class ImagesController < ApplicationController
         render partial: "images/vote_box",
           locals: { up_url: upvote_image_url(id: @vote.image_id),
             down_url: downvote_image_url(id: @vote.image_id),
-            votes: UserImageVote.where("image_id = #{@vote.image_id}").sum("vote") }
+            votes: UserImageVote.where("image_id = #{@vote.image_id}").sum("vote"),
+            model: Image.find(@vote.image_id) }
       else
         redirect_to :back, notice: "Voted Successfully"
       end

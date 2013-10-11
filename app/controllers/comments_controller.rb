@@ -52,7 +52,8 @@ class CommentsController < ApplicationController
         render partial: "images/vote_box",
           locals: { up_url: upvote_comment_url(id: @vote.comment_id),
             down_url: downvote_comment_url(id: @vote.comment_id),
-            votes: UserCommentVote.where("comment_id = #{@vote.comment_id}").sum("vote") }
+            votes: UserCommentVote.where("comment_id = #{@vote.comment_id}").sum("vote"),
+            model: Comment.find(@vote.comment_id) }
       else
         redirect_to :back, notice: "Upvoted Successfully"
       end
