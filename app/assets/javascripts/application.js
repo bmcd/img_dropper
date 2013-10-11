@@ -15,13 +15,13 @@
 //= require_tree .
 
 $(document).ready(function() {
+  startDNDListening();
+
   $(".login-button").on("click", "a", function(event) {
-    console.log("here");
     event.preventDefault();
     $(this).parent().toggleClass("show-login");
   });
   $(".signup-button").on("click", "a", function(event) {
-    console.log("here");
     event.preventDefault();
     $(this).parent().toggleClass("show-signup");
   });
@@ -48,6 +48,14 @@ $(document).ready(function() {
   $(".content").on("ajax:success", ".downvote-form", function(event, data) {
     $(this).closest(".vote-box").replaceWith(data);
   })
+
+  if ($(".flash-notice p").html() !== "") {
+    $(".flash-notice").slideDown("slow", function() {
+      setTimeout(function() {
+        $(".flash-notice").slideToggle("slow");
+      }, 2000);
+    });
+  }
 })
 
 function startDNDListening() {
