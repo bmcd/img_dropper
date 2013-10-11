@@ -83,37 +83,35 @@ class ImagesController < ApplicationController
   end
 
   def upvote
+    handle_vote(1)
+  end
+
+  def handle_vote(change)
     image_id = params[:id]
     user_id = current_user.id
     @vote = UserImageVote.find_by_user_id_and_image_id(user_id, image_id)
     if @vote
-      @vote.vote = (@vote.vote == 1 ? 0 : 1)
+      @vote.vote = (@vote.vote == change ? 0 : change)
     else
-      @vote = UserImageVote.new(user_id: user_id, image_id: image_id, vote: 1)
+      @vote = UserImageVote.new(user_id: user_id, image_id: image_id, vote: change)
     end
 
     if @vote.save
-      redirect_to :back, notice: "Upvoted Successfully"
+      if request.xhr?
+        render partial: "images/vote_box",
+          locals: { up_url: upvote_image_url(id: @vote.image_id),
+            down_url: downvote_image_url(id: @vote.image_id),
+            votes: UserImageVote.where("image_id = #{@vote.image_id}").sum("vote") }
+      else
+        redirect_to :back, notice: "Voted Successfully"
+      end
     else
-      redirect_to :back, notice: "Upvote Failed"
+      redirect_to :back, notice: "Vote Failed"
     end
   end
 
   def downvote
-    image_id = params[:id]
-    user_id = current_user.id
-    @vote = UserImageVote.find_by_user_id_and_image_id(user_id, image_id)
-    if @vote
-      @vote.vote = (@vote.vote == -1 ? 0 : -1)
-    else
-      @vote = UserImageVote.new(user_id: user_id, image_id: image_id, vote: -1)
-    end
-
-    if @vote.save
-      redirect_to :back, notice: "Upvoted Successfully"
-    else
-      redirect_to :back, notice: "Upvote Failed"
-    end
+    handle_vote(-1)
   end
 
   private

@@ -1,7 +1,7 @@
 <div class="vote-box">
   <div class="vote-button-holder">
-    <%= button_to "Upvote", up_url, method: :post, class: "upvote" %>
-    <%= button_to "Downvote", down_url, method: :post, class: "downvote" %>
+    <%= button_to "Upvote", up_url, method: :post, class: "upvote", form_class: "upvote-form", remote: true %>
+    <%= button_to "Downvote", down_url, method: :post, class: "downvote", form_class: "downvote-form", remote: true %>
   </div>
   <div class="vote-number"><%= votes || 0 %></div>
 </div>

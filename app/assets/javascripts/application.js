@@ -41,6 +41,13 @@ $(document).ready(function() {
     $(".comment-list").prepend($li);
     $(this).remove();
   })
+
+  $(".content").on("ajax:success", ".upvote-form", function(event, data) {
+    $(this).closest(".vote-box").replaceWith(data);
+  })
+  $(".content").on("ajax:success", ".downvote-form", function(event, data) {
+    $(this).closest(".vote-box").replaceWith(data);
+  })
 })
 
 function startDNDListening() {
