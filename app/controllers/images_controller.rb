@@ -48,7 +48,11 @@ class ImagesController < ApplicationController
       .first
     @comments_by_parent_id = @image.comments_by_parent_id
 
-    render :show
+    if request.xhr?
+      render :show, layout: false
+    else
+      render :show
+    end
   end
 
   def edit
@@ -86,6 +90,12 @@ class ImagesController < ApplicationController
     handle_vote(1)
   end
 
+  def downvote
+    handle_vote(-1)
+  end
+
+  private
+
   def handle_vote(change)
     image_id = params[:id]
     user_id = current_user.id
@@ -110,12 +120,6 @@ class ImagesController < ApplicationController
       redirect_to :back, notice: "Vote Failed"
     end
   end
-
-  def downvote
-    handle_vote(-1)
-  end
-
-  private
 
   def current_image
     @current_image ||= Image.find(params[:id])
