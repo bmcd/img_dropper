@@ -27,12 +27,13 @@ $(document).ready(function() {
   });
 
   $(".comment-list").on("ajax:success", ".comment-reply", function(event, data) {
-    $(this).click(function (event) { event.preventDefault(); return false;});
+    $(this).on("click", function (event) { event.preventDefault(); return false;});
     $(this).after(data);
   })
   $(".comment-list").on("ajax:success", ".comment-form", function(event, data) {
     $li = $("<li></li>").html(data)
     $(this).closest('li').children('ul').prepend($li);
+    $(this).siblings(".comment-reply").off("click");
     $(this).remove()
   })
   $(".content .comment-form").on("ajax:success", function(event, data) {
