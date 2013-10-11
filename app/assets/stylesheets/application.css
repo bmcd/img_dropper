@@ -397,3 +397,19 @@ ul ul {
   display: inline-block;
   vertical-align: middle;
 }
+
+.image-list > li {
+  position: relative;
+}
+
+.hover-vote {
+  padding: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.image-list > li:hover .hover-vote {
+  display: block;
+}
