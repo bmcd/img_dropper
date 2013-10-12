@@ -34,37 +34,36 @@ class CommentsController < ApplicationController
   end
 
   def upvote
+    handle_vote(1)
+  end
+
+  def handle_vote(change)
     comment_id = params[:id]
     user_id = current_user.id
     @vote = UserCommentVote.find_by_user_id_and_comment_id(user_id, comment_id)
     if @vote
-      @vote.vote = (@vote.vote == 1 ? 0 : 1)
+      @vote.vote = (@vote.vote == change ? 0 : change)
     else
-      @vote = UserCommentVote.new(user_id: user_id, comment_id: comment_id, vote: 1)
+      @vote = UserCommentVote.new(user_id: user_id, comment_id: comment_id, vote: change)
     end
 
     if @vote.save
-      redirect_to :back, notice: "Upvoted Successfully"
+      if request.xhr?
+        render partial: "images/vote_box",
+          locals: { up_url: upvote_comment_url(id: @vote.comment_id),
+            down_url: downvote_comment_url(id: @vote.comment_id),
+            votes: UserCommentVote.where("comment_id = #{@vote.comment_id}").sum("vote"),
+            model: Comment.find(@vote.comment_id) }
+      else
+        redirect_to :back, notice: "Upvoted Successfully"
+      end
     else
       redirect_to :back, notice: "Upvote Failed"
     end
   end
 
   def downvote
-    comment_id = params[:id]
-    user_id = current_user.id
-    @vote = UserCommentVote.find_by_user_id_and_comment_id(user_id, comment_id)
-    if @vote
-      @vote.vote = (@vote.vote == -1 ? 0 : -1)
-    else
-      @vote = UserCommentVote.new(user_id: user_id, comment_id: comment_id, vote: -1)
-    end
-
-    if @vote.save
-      redirect_to :back, notice: "Upvoted Successfully"
-    else
-      redirect_to :back, notice: "Upvote Failed"
-    end
+    handle_vote(-1)
   end
 
 end

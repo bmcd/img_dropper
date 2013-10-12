@@ -1,7 +1,8 @@
 <ul class="image-list">
   <% @images.each do |image| %>
     <li>
-      <%= link_to image_tag(image.image.url(:thumb)), image_url(image) %>
+      <%= link_to image_tag(image.image.url(:thumb)), image_url(image), class: "image-square", remote: true %>
+      <div class="hover-vote"><%= render "vote_box", model: image, up_url: upvote_image_url(image), down_url: downvote_image_url(image), votes: image.votes %></div>
     </li>
   <% end %>
 </ul>

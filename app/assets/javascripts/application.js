@@ -15,31 +15,70 @@
 //= require_tree .
 
 $(document).ready(function() {
+  startDNDListening();
+
   $(".login-button").on("click", "a", function(event) {
-    console.log("here");
     event.preventDefault();
     $(this).parent().toggleClass("show-login");
   });
   $(".signup-button").on("click", "a", function(event) {
-    console.log("here");
     event.preventDefault();
     $(this).parent().toggleClass("show-signup");
   });
 
-  $(".comment-list").on("ajax:success", ".comment-reply", function(event, data) {
-    $(this).click(function (event) { event.preventDefault(); return false;});
+  $("#new-image").on("submit", function (event) {
+    $(this).children(":submit").attr("disabled", true);;
+  })
+
+  $("body").on("ajax:success", ".comment-list .comment-reply", function(event, data) {
+    $(this).on("click.disable", function (event) { event.preventDefault(); return false;});
     $(this).after(data);
   })
-  $(".comment-list").on("ajax:success", ".comment-form", function(event, data) {
+  $("body").on("ajax:success", ".comment-list .comment-form", function(event, data) {
     $li = $("<li></li>").html(data)
     $(this).closest('li').children('ul').prepend($li);
+    $(this).siblings(".comment-reply").off("click.disable");
     $(this).remove()
   })
-  $(".content .comment-form").on("ajax:success", function(event, data) {
+  $(".content").on("ajax:success", ".comment-form", function(event, data) {
     $li = $("<li></li>").html(data)
     $(".comment-list").prepend($li);
     $(this).remove();
   })
+
+  $("body").on("ajax:success", ".nested-show-page > .comment-form", function(event, data) {
+    $li = $("<li></li>").html(data)
+    $(".comment-list").prepend($li);
+    $(this).remove();
+  })
+
+  $("body").on("ajax:success", ".upvote-form", function(event, data) {
+    $(this).closest(".vote-box").replaceWith(data);
+  })
+
+  $("body").on("ajax:success", ".downvote-form", function(event, data) {
+    $(this).closest(".vote-box").replaceWith(data);
+  })
+
+  $(".image-list").on("ajax:success", ".image-square", function(event, data) {
+    window.scrollTo(0, 0);
+    $(".nested-show-page").html(data);
+    $(".show-page-holder").fadeTo("slow", 1);
+    $(".transparent-background").fadeTo("slow", 1);
+  })
+  $(".transparent-background").on("click", function() {
+    $(".show-page-holder").hide("slow");
+    $(".transparent-background").hide(1);
+    $(".nested-show-page").html("");
+  })
+
+  if ($(".flash-notice p").html() !== "") {
+    $(".flash-notice").slideDown("slow", function() {
+      setTimeout(function() {
+        $(".flash-notice").slideToggle("slow");
+      }, 2000);
+    });
+  }
 })
 
 function startDNDListening() {
