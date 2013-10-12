@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }
 
-  has_many :sessions
-  has_many :images
+  has_many :sessions, dependent: :destroy
+  has_many :images, dependent: :destroy
   has_many :albums
   has_many :comments
   has_many :user_comment_votes
