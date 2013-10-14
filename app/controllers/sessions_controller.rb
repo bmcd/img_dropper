@@ -16,8 +16,13 @@ class SessionsController < ApplicationController
         redirect_to :root, notice: "Welcome back, #{@user.email}"
       end
     else
-      @user ||= User.new
-      render :new
+      @user = User.new
+      @user.errors[:invalid] = "email/password combination"
+      if request.xhr?
+        render partial: "sessions/login", status: 422
+      else
+        render :new
+      end
     end
   end
 

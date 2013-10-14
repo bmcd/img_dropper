@@ -63,8 +63,19 @@ $(document).ready(function() {
   })
 
   $("body").on ("ajax:success", ".login-form", function(event, data) {
-    console.log("data");
     $(".top-bar").replaceWith(data);
+  })
+
+  $("body").on ("ajax:success", ".new_user", function(event, data) {
+    $(".top-bar").replaceWith(data);
+  })
+
+  $("body").on ("ajax:error", ".login-form", function(event, data) {
+    $(this).replaceWith(data.responseText);
+  })
+
+  $("body").on ("ajax:error", ".new_user", function(event, data) {
+    $(this).replaceWith(data.responseText);
   })
 
   $("body").on("ajax:success", ".upvote-form", function(event, data) {

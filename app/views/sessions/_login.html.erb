@@ -1,3 +1,5 @@
+<%= @user.errors.full_messages.to_sentence if @user %>
+
 <%= form_tag("/session", method: 'post', remote: true, class: "login-form") do %>
   <%= label_tag(:email, "Email:") %>
   <%= text_field_tag(:email) %>

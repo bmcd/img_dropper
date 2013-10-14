@@ -10,9 +10,17 @@ class UsersController < ApplicationController
 
     if @user.save
       self.current_user = @user
-      redirect_to :back, notice: "User Created"
+      if request.xhr?
+        render partial: "layouts/top_bar"
+      else
+        redirect_to :back, notice: "User Created"
+      end
     else
-      render :new
+      if request.xhr?
+        render partial: "users/signup"
+      else
+        render :new
+      end
     end
   end
 
