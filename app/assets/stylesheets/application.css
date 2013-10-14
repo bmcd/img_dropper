@@ -181,7 +181,7 @@ h3 {
 
 div.content {
   padding-top: 57px;
-  background: #bdc3c7;
+  /*background: #bdc3c7;*/
   width: 940px;
   margin: 0 auto;
   min-height: 100%;
@@ -191,6 +191,7 @@ div.image-show {
   padding: 15px;
   float: left;
   width: 600px;
+/*  background: #bdc3c7;*/
 }
 
 .image-show p {
@@ -305,6 +306,8 @@ ul ul {
   padding: 15px;
   width: 600px;
   float: left;
+  background: #bdc3c7;
+  padding-right: 6px;
 }
 
 .image-list > li {
@@ -327,7 +330,7 @@ ul ul {
   float: right;
   padding: 15px;
   background: #34495e;
-  margin: 15px 30px 15px 0;
+  margin: 0 30px 15px 0;
   text-align: center;
   color: #eee;
 }

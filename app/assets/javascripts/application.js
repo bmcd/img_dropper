@@ -118,7 +118,19 @@ function drop(event) {
 
 function handleFiles(files) {
   var file = files[0];
-  uploadFile(file);
+  if (file.size < 1048576) {
+    uploadFile(file);
+  } else {
+    $(".droppable div p").html("File size must be under 1 MB");
+    setTimeout(function () {
+      // $(".droppable").hide(200, function() {
+        $(".droppable").removeClass("showing");
+        $("#dropmask").removeClass("showing");
+        $(".droppable div p").html("Drop file anywhere to upload.")
+        // startDNDListening();
+      // })
+    }, 3000)
+  }
 }
 
 function uploadFile(file) {
