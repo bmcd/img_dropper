@@ -5,6 +5,10 @@ class Image < ActiveRecord::Base
   attr_accessible :description, :title, :album_ids, :image, :image_url, :user_id
   attr_accessor :image_url
 
+  searchable do
+    text :title, :body
+  end
+
   # has_many :album_images, dependent: :destroy
   # has_many :albums, through: :album_images
   has_many :comments, dependent: :destroy

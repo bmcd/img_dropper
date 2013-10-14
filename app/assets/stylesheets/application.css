@@ -118,17 +118,14 @@ body, html {
   height: 90%;
   z-index: 102;
   overflow-y: scroll;
-/*  background: #7f8c8d;*/
 }
 
 .nested-show-page .link-box {
-/*  background: #34495e;*/
   color: #ecf0f1;
   margin-top: 30px;
 }
 
 .nested-show-page .image-show {
-/*  background: #34495e;*/
   color: #ecf0f1;
 }
 
@@ -206,7 +203,6 @@ h3 {
 
 div.content {
   padding-top: 57px;
-  /*background: #bdc3c7;*/
   width: 940px;
   margin: 0 auto;
   min-height: 100%;
@@ -216,7 +212,6 @@ div.image-show {
   padding: 15px;
   float: left;
   width: 600px;
-/*  background: #bdc3c7;*/
 }
 
 .image-show p {
@@ -341,7 +336,6 @@ ul ul {
 }
 
 .file-field {
-/*  margin: 0 auto;*/
   display: inline;
   padding-top: 5px;
 }

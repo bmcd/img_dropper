@@ -9,6 +9,8 @@ gem 'rails', '3.2.13'
 
 gem 'pg'
 
+gem 'sunspot_rails'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -25,6 +27,7 @@ end
 gem 'jquery-rails'
 
 group :development do
+  gem 'sunspot_solr'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'backbone-on-rails'
