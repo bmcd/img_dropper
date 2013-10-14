@@ -30,6 +30,7 @@ class ImagesController < ApplicationController
   end
 
   def index
+    @user = User.new(email: params[:email], password: params[:password])
     @images = Image.select("images.*, SUM(user_image_votes.vote) AS votes")
       .joins("LEFT OUTER JOIN user_image_votes ON user_image_votes.image_id = images.id")
       .group("images.id")

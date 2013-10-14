@@ -140,11 +140,11 @@ function startLoggedOutListening() {
   })
 
   $("body").on("ajax:error", ".login-form", function(event, data) {
-    $(this).replaceWith(data.responseText);
+    $(this).parent().replaceWith(data.responseText);
   })
 
   $("body").on("ajax:error", ".new_user", function(event, data) {
-    $(this).replaceWith(data.responseText);
+    $(this).parent().replaceWith(data.responseText);
   })
 
   $("body").on("ajax:error", function(event, data) {

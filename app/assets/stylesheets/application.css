@@ -63,7 +63,7 @@ table {
 }
 
 body, html {
-  font-family: Arial, sans-serif;
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
   background: #ecf0f1;
   position: relative;
 /*  height: 100%;
@@ -416,25 +416,62 @@ ul ul {
   position: relative;
 }
 
+a {
+  color: #ecf0f1;
+}
+
+label {
+  color: #ecf0f1;
+  font-size: 16pt;
+  font-weight: bold;
+  padding-bottom: 15px;
+  display: block;
+}
+
+.login-page input, .signup-page input {
+  display: inline-block;
+  width: 180px;
+  margin-bottom: 15px;
+}
+
+.login-page input[type=submit], .signup-page input[type=submit] {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  display: inline-block;
+  width: 60px;
+}
+
+
 .login-page {
   position: relative;
   display: none;
+  text-align: center;
   background: #34495e;
-  margin: 25% 40%;
+  margin: 25% auto;
   padding: 15px;
   z-index: 200;
+  color: #ecf0f1;
+  width: 250px;
+  font-size: 12px;
 }
 
 .signup-page {
   position: relative;
   display: none;
+  text-align: center;
   background: #34495e;
-  margin: 25% 40%;
+  margin: 25% auto;
   padding: 15px;
   z-index: 200;
+  color: #ecf0f1;
+  color: #ecf0f1;
+  width: 250px;
+  font-size: 12px;
 }
 
+.signup-link {
 
+}
 
 .signup-page.show, .login-page.show {
   display: block;

@@ -1,12 +1,14 @@
 <%= @user.errors.full_messages.to_sentence if @user %>
 
-Not a user? <%= link_to "Sign Up", new_user_url, class: "signup-link" %>
-
 <%= form_tag("/session", method: 'post', remote: true, class: "login-form") do %>
+  <% email = (@user.email if @user) || "" %>
+  <% password = (@user.password if @user) || "" %>
   <%= label_tag(:email, "Email:") %>
-  <%= text_field_tag(:email) %>
+  <%= text_field_tag(:email, email) %>
   <%= label_tag(:password, "Password:") %>
-  <%= password_field_tag(:password) %>
+  <%= password_field_tag(:password, password) %><br>
 
   <%= submit_tag("Log In") %>
 <% end %>
+
+Not a user? <%= link_to "Sign Up", new_user_url, class: "signup-link" %>
