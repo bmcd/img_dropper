@@ -7,7 +7,9 @@
   <ul class="top-right">
     <% if current_user %>
       <li><%= button_to "Log out", session_url, method: :delete %></li>
-      <li><%= link_to current_user.email, user_url(current_user) %></li>
+      <li class="user-button">
+        <%= link_to current_user.email, user_url(current_user) %>
+      </li>
     <% else %>
       <li class="login-button">
         <%= link_to "Log In", new_session_url %>

@@ -10,7 +10,13 @@ module SessionsHelper
   end
 
   def require_logged_in!
-    redirect_to new_session_url unless current_user
+    unless current_user
+      if request.xhr?
+        render text: "not logged in", status: 401
+      else
+        redirect_to new_session_url
+      end
+    end
   end
 
   def destroy_session
