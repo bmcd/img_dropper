@@ -8,8 +8,18 @@
 </head>
 <body id="body">
 
+  <div class="login-overlay">
+    <div class="transparent-background login"></div>
+    <div class="signup-page">
+      <%= render "users/signup", user: User.new unless current_user %>
+    </div>
+    <div class="login-page">
+      <%= render "sessions/login" unless current_user %>
+    </div>
+  </div>
+
   <div class="show-page-holder">
-    <div class="transparent-background"></div>
+    <div class="transparent-background show"></div>
     <div class="nested-show-page"></div>
   </div>
 

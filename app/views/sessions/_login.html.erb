@@ -1,5 +1,7 @@
 <%= @user.errors.full_messages.to_sentence if @user %>
 
+Not a user? <%= link_to "Sign Up", new_user_url, class: "signup-link" %>
+
 <%= form_tag("/session", method: 'post', remote: true, class: "login-form") do %>
   <%= label_tag(:email, "Email:") %>
   <%= text_field_tag(:email) %>

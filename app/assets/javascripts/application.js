@@ -39,15 +39,12 @@ $(document).ready(function() {
   });
 
   $(".image-list").on("ajax:success", ".image-square", function(event, data) {
-    window.scrollTo(0, 0);
-    $(".nested-show-page").html(data);
-    $(".show-page-holder").fadeTo("slow", 1);
-    $(".transparent-background").fadeTo("slow", 1);
+    $target = $(".nested-show-page").html(data);
+    showOverlay($target, $(".show-page-holder"));
   })
-  $(".transparent-background").on("click", function() {
-    $(".show-page-holder").hide("slow");
-    $(".transparent-background").hide(1);
-    $(".nested-show-page").html("");
+
+  $(".transparent-background.show").on("click", function() {
+    hideOverlay($(".show-page-holder"));
   })
 
   if ($(".flash-notice p").html() !== "") {
@@ -58,6 +55,18 @@ $(document).ready(function() {
     });
   }
 })
+
+function showOverlay($target, $parent) {
+  $target.show();
+  $parent.children(".transparent-background").show();
+  $parent.fadeTo(120, 1);
+}
+
+function hideOverlay($parent) {
+  $parent.fadeTo(120, 0, function() {
+    $parent.hide().children().hide();
+  });
+}
 
 function startLoggedInListening() {
   $("body").on("ajax:success", ".upvote-form", function(event, data) {
@@ -96,27 +105,41 @@ function startLoggedInListening() {
 function startLoggedOutListening() {
   $(".login-button").on("click", "a", function(event) {
     event.preventDefault();
-    $(this).parent().toggleClass("show-login");
+    showOverlay($(".login-page"), $(".login-overlay"));
   });
 
   $(".signup-button").on("click", "a", function(event) {
     event.preventDefault();
-    $(this).parent().toggleClass("show-signup");
+    showOverlay($(".signup-page"), $(".login-overlay"));
   });
 
-  $(".top-bar").on("ajax:success", ".login-form", function(event, data) {
-    $(".top-bar").replaceWith(data);
+  $(".signup-link").on("click", function(event) {
+    event.preventDefault();
+    $(".login-page").hide();
+    $(".signup-page").show();
   })
 
-  $(".top-bar").on("ajax:success", ".new_user", function(event, data) {
-    $(".top-bar").replaceWith(data);
+  $(".transparent-background.login").on("click", function() {
+    hideOverlay($(".login-overlay"));
   })
 
-  $(".top-bar").on("ajax:error", ".login-form", function(event, data) {
+  $("body").on("ajax:success", ".login-form", function(event, data) {
+    $(".top-bar").replaceWith(data);
+    startLoggedInListening();
+    hideOverlay($(".login-overlay"));
+  })
+
+  $("body").on("ajax:success", ".new_user", function(event, data) {
+    $(".top-bar").replaceWith(data);
+    startLoggedInListening();
+    hideOverlay($(".login-overlay"));
+  })
+
+  $("body").on("ajax:error", ".login-form", function(event, data) {
     $(this).replaceWith(data.responseText);
   })
 
-  $(".top-bar").on("ajax:error", ".new_user", function(event, data) {
+  $("body").on("ajax:error", ".new_user", function(event, data) {
     $(this).replaceWith(data.responseText);
   })
 

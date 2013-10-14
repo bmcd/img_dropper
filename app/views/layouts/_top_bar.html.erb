@@ -13,15 +13,9 @@
     <% else %>
       <li class="login-button">
         <%= link_to "Log In", new_session_url %>
-        <div class="top-bar-dropdown">
-          <%= render "sessions/login" %>
-        </div>
       </li>
       <li class="signup-button">
         <%= link_to "Sign Up", new_user_url %>
-        <div class="top-bar-dropdown">
-          <%= render "users/signup", user: User.new %>
-        </div>
       </li>
     <% end %>
   </ul>

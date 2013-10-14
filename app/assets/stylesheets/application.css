@@ -81,6 +81,17 @@ body, html {
   z-index: 100;
 }
 
+.login-overlay {
+  display: none;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  z-index: 198;
+}
+
 .transparent-background {
   display: none;
   position: fixed;
@@ -89,6 +100,10 @@ body, html {
   width: 100%;
   min-height: 100%;
   z-index: 100;
+}
+
+.transparent-background.login {
+  z-index: 199;
 }
 
 .nested-show-page {
@@ -401,20 +416,27 @@ ul ul {
   position: relative;
 }
 
-.top-bar-dropdown {
+.login-page {
+  position: relative;
   display: none;
   background: #34495e;
-  position: absolute;
-  right: 0;
-  top: 47px;
+  margin: 25% 40%;
   padding: 15px;
+  z-index: 200;
 }
 
-.top-right.show-login, .top-right.show-signup {
+.signup-page {
+  position: relative;
+  display: none;
   background: #34495e;
+  margin: 25% 40%;
+  padding: 15px;
+  z-index: 200;
 }
 
-.show-login .top-bar-dropdown, .show-signup .top-bar-dropdown {
+
+
+.signup-page.show, .login-page.show {
   display: block;
 }
 
