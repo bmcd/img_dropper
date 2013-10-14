@@ -27,8 +27,17 @@ $(document).ready(function() {
   });
 
   $("#new-image").on("submit", function (event) {
-    $(this).children(":submit").attr("disabled", true);;
+    $(this).children(":submit").attr("disabled", true);
   })
+
+  $('#new-image :file').bind('change', function() {
+    if (this.files[0].size > 1048576) {
+      showFileTooBig();
+      var input = $('#new-image :file');
+      var newInput = input.clone(true);
+      input.replaceWith(newInput);
+    }
+  });
 
   $("body").on("ajax:success", ".comment-list .comment-reply", function(event, data) {
     $(this).on("click.disable", function (event) { event.preventDefault(); return false;});
@@ -121,16 +130,19 @@ function handleFiles(files) {
   if (file.size < 1048576) {
     uploadFile(file);
   } else {
-    $(".droppable div p").html("File size must be under 1 MB");
-    setTimeout(function () {
-      // $(".droppable").hide(200, function() {
-        $(".droppable").removeClass("showing");
-        $("#dropmask").removeClass("showing");
-        $(".droppable div p").html("Drop file anywhere to upload.")
-        // startDNDListening();
-      // })
-    }, 3000)
+    showFileTooBig();
   }
+}
+
+function showFileTooBig() {
+  $(".droppable").addClass("showing")
+  $(".droppable div p").html("File size must be under 1 MB");
+
+  setTimeout(function () {
+    $(".droppable").removeClass("showing");
+    $("#dropmask").removeClass("showing");
+    $(".droppable div p").html("Drop file anywhere to upload.")
+  }, 3000)
 }
 
 function uploadFile(file) {
