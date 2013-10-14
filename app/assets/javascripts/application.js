@@ -40,6 +40,8 @@ $(document).ready(function() {
 
   $(".image-list").on("ajax:success", ".image-square", function(event, data) {
     $target = $(".nested-show-page").html(data);
+    console.log()
+    $(".show-page-holder").height($(window).height());
     showOverlay($target, $(".show-page-holder"));
   })
 
@@ -57,6 +59,7 @@ $(document).ready(function() {
 })
 
 function showOverlay($target, $parent) {
+  $("body").addClass("noscroll")
   $target.show();
   $parent.children(".transparent-background").show();
   $parent.fadeTo(120, 1);
@@ -65,6 +68,7 @@ function showOverlay($target, $parent) {
 function hideOverlay($parent) {
   $parent.fadeTo(120, 0, function() {
     $parent.hide().children().hide();
+    $("body").removeClass("noscroll")
   });
 }
 
