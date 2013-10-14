@@ -10,7 +10,11 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       self.current_user = @user
-      redirect_to :root, notice: "Welcome back, #{@user.email}"
+      if request.xhr?
+        render partial: "layouts/top_bar"
+      else
+        redirect_to :root, notice: "Welcome back, #{@user.email}"
+      end
     else
       @user ||= User.new
       render :new

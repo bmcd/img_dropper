@@ -43,6 +43,7 @@ $(document).ready(function() {
     $(this).on("click.disable", function (event) { event.preventDefault(); return false;});
     $(this).after(data);
   })
+
   $("body").on("ajax:success", ".comment-list .comment-form", function(event, data) {
     $li = $("<li></li>").html(data)
     $(this).closest('li').children('ul').prepend($li);
@@ -59,6 +60,11 @@ $(document).ready(function() {
     $li = $("<li></li>").html(data)
     $(".comment-list").prepend($li);
     $(this).remove();
+  })
+
+  $("body").on ("ajax:success", ".login-form", function(event, data) {
+    console.log("data");
+    $(".top-bar").replaceWith(data);
   })
 
   $("body").on("ajax:success", ".upvote-form", function(event, data) {
