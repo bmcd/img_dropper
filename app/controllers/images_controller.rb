@@ -38,6 +38,15 @@ class ImagesController < ApplicationController
       votes = image.votes || "0"
       [votes.to_i, image.created_at]
     end.reverse!
+
+    if current_user
+      @recent_images = current_user.images.order("created_at desc").limit(5)
+      @title = "Your Recent Images"
+    else
+      @recent_images = Image.order("created_at desc").limit(5)
+      @title = "Most Recent Images"
+    end
+    render :index
   end
 
   def show

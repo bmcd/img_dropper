@@ -201,6 +201,10 @@ h3 {
   padding-right: 5px;
 }
 
+h4 {
+  font-size: 12pt;
+}
+
 div.content {
   padding-top: 57px;
   width: 940px;
@@ -562,4 +566,39 @@ label {
 
 .image-list > li:hover .hover-vote {
   display: block;
+}
+
+.sidebar-image-list {
+  float: right;
+  padding: 10px;
+  margin: 0 30px 15px 0;
+  width: 251px;
+  background: #BDC3C7;
+}
+
+.sidebar-image-list-item {
+  vertical-align: middle;
+  padding: 5px 10px;
+}
+
+.sidebar-image-list-img {
+  width: 60px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.sidebar-image-list-body {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 15px;
+
+}
+
+.sidebar-image-list-body a {
+ text-decoration: none;
+ color: #2C3E50;
+}
+
+.sidebar-image-list h3 {
+  text-align: center;
 }
