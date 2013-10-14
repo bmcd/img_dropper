@@ -129,9 +129,9 @@ body, html {
   z-index: 102;
 }
 
-.dropmask {
+#dropmask {
   display: none;
-  z-index: 102;
+  z-index: 103;
 }
 
 #dropmask.showing {
@@ -145,6 +145,10 @@ body, html {
 
 .droppable.showing {
   display: block;
+}
+
+.error {
+  background: rgba(99, 9, 9, 0.8);
 }
 
 .droppable div {

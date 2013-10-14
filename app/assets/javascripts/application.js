@@ -136,11 +136,13 @@ function handleFiles(files) {
 
 function showFileTooBig() {
   $(".droppable").addClass("showing")
+  $(".droppable").addClass("error")
   $(".droppable div p").html("File size must be under 1 MB");
 
   setTimeout(function () {
     $(".droppable").removeClass("showing");
     $("#dropmask").removeClass("showing");
+    $(".droppable").removeClass("error");
     $(".droppable div p").html("Drop file anywhere to upload.")
   }, 3000)
 }
