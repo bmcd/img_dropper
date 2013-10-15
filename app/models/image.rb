@@ -5,9 +5,9 @@ class Image < ActiveRecord::Base
   attr_accessible :description, :title, :album_ids, :image, :image_url, :user_id
   attr_accessor :image_url
 
-  searchable do
-    text :title, :body
-  end
+  # searchable do
+#     text :title, :description
+#   end
 
   has_many :comments, dependent: :destroy
   has_many :user_image_votes, dependent: :destroy
