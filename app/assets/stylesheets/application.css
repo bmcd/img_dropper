@@ -384,6 +384,9 @@ ul ul {
 .top-bar a {
   color: #ecf0f1;
   text-decoration: none;
+  padding: 15px;
+  height: 17px;
+  display: block;
 }
 
 .top-bar {
@@ -397,8 +400,7 @@ ul ul {
 }
 
 .top-bar li {
-  padding: 15px;
-  height: 17px;
+
 }
 
 .top-bar button {
@@ -407,7 +409,7 @@ ul ul {
   padding: 0!important;
 }
 
-.top-bar li:hover {
+.top-bar li:hover a {
   background: #34495e;
 }
 
