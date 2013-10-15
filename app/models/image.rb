@@ -21,7 +21,7 @@ class Image < ActiveRecord::Base
       large: "600x"
     },
     url: ":s3_path_url",
-    :path => ":class/:id.:style.:extension"
+    path: ":class/:id.:style.:extension"
 
 
 
