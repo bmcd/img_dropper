@@ -350,10 +350,11 @@ ul ul {
 }
 
 .new_image {
-  float: right;
+/*  float: right;*/
   padding: 15px;
   background: #34495e;
-  margin: 0 30px 15px 0;
+  margin-bottom: 15px;
+/*  margin: 0 30px 15px 0;*/
   text-align: center;
   color: #eee;
 }
@@ -570,10 +571,18 @@ label {
   display: block;
 }
 
-.sidebar-image-list {
+.sidebar {
   float: right;
+  position: fixed;
+/*  right: 40px;*/
+  margin: 0 30px 15px 640px;
+  width: 271px;
+}
+
+.sidebar-image-list {
+/*  float: right;*/
   padding: 10px;
-  margin: 0 30px 15px 0;
+/*  margin: 0 30px 15px 0;*/
   width: 251px;
   background: #BDC3C7;
 }

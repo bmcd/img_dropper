@@ -7,7 +7,8 @@
   <% end %>
 </ul>
 
-<%= render 'upload_box', image: Image.new %>
+<section class="sidebar group">
+  <%= render 'upload_box', image: Image.new %>
 
-
-<%= render 'recent_images', images: @recent_images, title: @title %>
+  <%= render 'recent_images', images: @recent_images, title: @title %>
+</section>
