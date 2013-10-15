@@ -72,6 +72,7 @@ body, html {
 
 .noscroll {
   overflow: hidden;
+  margin-right: 16px;
 }
 
 .show-page-holder {
@@ -112,12 +113,22 @@ body, html {
 
 .nested-show-page {
   position: relative;
-  margin: 50px auto;
+/*  margin: 50px auto;*/
   width: 940px;
   min-height: 90%;
   height: 90%;
   z-index: 102;
   overflow-y: scroll;
+}
+
+.nested-scroll-fix {
+  position: relative;
+  margin: 50px auto;
+  width: 924px;
+  min-height: 100%%;
+  height: 100%;
+  z-index: 102;
+  overflow: hidden;
 }
 
 .nested-show-page .link-box {
