@@ -1,7 +1,7 @@
-<h1><%= @user.email %>'s Page</h1>
+<header class="user-show-title"><h1><%= @user.email %>'s Images</h1></header>
 
 
-<ul class="user-image-list">
+<ul class="user-image-list group">
   <% @user.images.each do |image| %>
     <li class="user-image-list-item">
       <% if current_user && image.user_id == current_user.id %>

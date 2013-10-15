@@ -120,6 +120,7 @@ body, html {
   height: 90%;
   z-index: 102;
   overflow-y: scroll;
+  background: rgba(0, 0, 0, 0.2)
 }
 
 .nested-scroll-fix {
@@ -265,6 +266,19 @@ div.image-show {
 
 .user-image-list {
   padding: 15px;
+  background: #bdc3c7;
+  width: 600px;
+/*  float: left;*/
+  margin: 0 auto;
+}
+
+.user-show-title {
+  text-align: center;
+}
+
+.show-page-holder .user-image-list {
+  float: none;
+  margin: 0 auto;
 }
 
 .user-image-list-item {
@@ -282,7 +296,7 @@ div.image-show {
 .user-image-list-body {
   display: inline-block;
   vertical-align: middle;
-  width: 700px;
+  width: 400px;
 }
 
 .user-image-buttons {
@@ -318,6 +332,7 @@ ul ul {
   display: inline-block;
   vertical-align: middle;
   max-width: 800px;
+  padding-left: 5px;
 }
 
 .comment-links {
