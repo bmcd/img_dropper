@@ -9,8 +9,6 @@ class Image < ActiveRecord::Base
     text :title, :body
   end
 
-  # has_many :album_images, dependent: :destroy
-  # has_many :albums, through: :album_images
   has_many :comments, dependent: :destroy
   has_many :user_image_votes, dependent: :destroy
 
