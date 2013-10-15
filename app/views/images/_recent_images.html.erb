@@ -4,9 +4,9 @@
   <h3><%= title %></h3>
 <% images.each do |image| %>
   <li class="sidebar-image-list-item">
-    <a href="<%= image_url(image) %>"><img class="sidebar-image-list-img" src="<%= image.image.url(:thumb) %>"></a>
+    <a href="<%= image_url(image) %>" data-remote="true"><img class="sidebar-image-list-img" src="<%= image.image.url(:thumb) %>"></a>
     <article class="sidebar-image-list-body">
-      <a href="<%= image_url(image) %>"><h4><%= image.title %></h4></a>
+      <a href="<%= image_url(image) %>" data-remote="true"><h4><%= image.title %></h4></a>
     </article>
   </li>
 <% end %>
