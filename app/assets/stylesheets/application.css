@@ -657,3 +657,13 @@ label {
 .sidebar-image-list h3 {
   text-align: center;
 }
+
+.pagination {
+	clear: both;
+	text-align: center;
+}
+
+#ajax-loader {
+	text-align: center;
+	display: none;
+}

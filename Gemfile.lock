@@ -79,6 +79,9 @@ GEM
     jquery-ui-rails (4.0.5)
       railties (>= 3.1.0)
     json (1.8.0)
+    kaminari (0.14.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -172,6 +175,7 @@ DEPENDENCIES
   figaro
   jquery-rails
   jquery-ui-rails
+  kaminari
   paperclip
   pg
   rails (= 3.2.13)

@@ -34,10 +34,8 @@ class ImagesController < ApplicationController
     @images = Image.select("images.*, SUM(user_image_votes.vote) AS votes")
       .joins("LEFT OUTER JOIN user_image_votes ON user_image_votes.image_id = images.id")
       .group("images.id")
-    @images.sort_by! do |image|
-      votes = image.votes || "0"
-      [votes.to_i, image.created_at]
-    end.reverse!
+      .order("votes DESC, images.created_at DESC")
+      .page(params[:page] || 1)
 
     if current_user
       @recent_images = current_user.images.order("created_at desc").limit(5)
@@ -46,7 +44,12 @@ class ImagesController < ApplicationController
       @recent_images = Image.order("created_at desc").limit(5)
       @title = "Most Recent Images"
     end
-    render :index
+    
+    if request.xhr?
+      render partial: "image_items", locals: { images: @images}
+    else
+      render :index
+    end
   end
 
   def show
