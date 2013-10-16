@@ -40,17 +40,20 @@ describe "PasswordResets" do
     visit edit_password_reset_url(id: token.token)
     
     within(".content") do
-      fill_in "Password", with: "newpassword"
-      fill_in "Password Confirmation", with: "newpassword"
+      fill_in "Password:", with: "newpassword"
+      fill_in "Confirm Password:", with: "newpassword"
+      click_button "Save"
     end
     
-    click_button "Save"
+    
+    
+    expect(page).to have_content("Password Successfully Changed")
     
     visit new_session_url
     within(".content") do
       fill_in "Email", with: user.email
       fill_in "Password", with: "newpassword"
-      click_button "Login"
+      click_button "Log In"
     end
     
     expect(page).to have_content("Welcome back")

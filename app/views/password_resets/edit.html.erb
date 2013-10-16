@@ -1,9 +1,11 @@
 <h1>Reset Password for <%= @user.email %></h1>
 
 <%= form_for @user do |f| %>
-	<%= label_tag(:password, "Password:") %>
-	<%= f.password_field(:password) %>
-	<%= label_tag(:password_confirmation, "Confirm Password:") %>
-	<%= f.password_field(:password_confirmation) %><br>
+	<label>Password:
+		<input type="password" name="user[password]">
+	</label>
+	<label>Confirm Password:
+		<input type="password" name="user[password_confirmation]">
+	</label>
 	<%= f.submit "Save" %>
 <% end %>

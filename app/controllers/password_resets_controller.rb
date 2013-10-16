@@ -15,10 +15,12 @@ class PasswordResetsController < ApplicationController
   end
   
   def edit
-    # @password_reset = PasswordReset.find_by_token(params[:token])
- #    if @password_reset
- #      
- #    else
- #      redirect_to 
+    @password_reset = PasswordReset.find_by_token(params[:id])
+    if @password_reset
+      @user = @password_reset.user
+      render :edit
+    elsif 
+      redirect_to :root, notice: "Invalid password reset token"
+    end
   end
 end
