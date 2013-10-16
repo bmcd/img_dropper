@@ -13,8 +13,7 @@ describe UserMailer do
     end
 
     it "renders the body" do
-      mail.body.encoded.should match(edit_password_reset_url(token))
+      mail.body.encoded.should match(edit_password_reset_url(id: token.token))
     end
   end
-
 end

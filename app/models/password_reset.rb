@@ -1,4 +1,7 @@
 class PasswordReset < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :token, use: :slugged
+  
   belongs_to :user
   attr_accessible :token, :user_id
   

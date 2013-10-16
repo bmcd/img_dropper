@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131016190311) do
+ActiveRecord::Schema.define(:version => 20131016210958) do
 
   create_table "album_images", :force => true do |t|
     t.integer  "image_id"
@@ -65,8 +65,10 @@ ActiveRecord::Schema.define(:version => 20131016190311) do
     t.string   "token",      :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "slug"
   end
 
+  add_index "password_resets", ["slug"], :name => "index_password_resets_on_slug", :unique => true
   add_index "password_resets", ["user_id", "token"], :name => "index_password_resets_on_user_id_and_token"
 
   create_table "sessions", :force => true do |t|
