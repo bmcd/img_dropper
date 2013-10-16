@@ -26,12 +26,18 @@ end
 
 gem 'jquery-rails'
 
+gem 'rspec-rails', group: [:test, :development]
+
 group :development do
   gem 'sunspot_solr'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'backbone-on-rails'
-  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'factory_girl_rails'
 end
 
 # To use ActiveModel has_secure_password
