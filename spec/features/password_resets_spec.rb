@@ -13,6 +13,19 @@ describe "PasswordResets" do
     end
     
     expect(page).to have_content("Email sent")
-    expect(last_email.to).to include(user.email)
+  end
+  
+  it "does not email invalid users when reseting password" do
+    user = FactoryGirl.create(:user)
+    visit new_session_url
+    within(".content") do
+      click_link "Click Here"
+    end
+    within(".content") do
+      fill_in "Email", with: "not@email.com"
+      click_button "Reset Password"
+    end
+    
+    expect(page).to have_content("Invalid email address.")
   end
 end

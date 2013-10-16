@@ -47,4 +47,19 @@ describe User do
 
     expect(user2).to_not be_valid
   end
+  
+  describe "#send_password_reset_email" do
+    let(:user) { FactoryGirl.create(:user) }
+    
+    it "generates a unique password reset token each time" do
+      user.send_password_reset_email
+      user.send_password_reset_email
+      expect(user.password_resets.length).to eq(2)
+    end
+    
+    it "delivers email to user" do
+      user.send_password_reset_email
+      expect(last_email.to).to include(user.email)
+    end
+  end
 end
