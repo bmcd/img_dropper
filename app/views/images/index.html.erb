@@ -1,3 +1,6 @@
+<input type="hidden" class="page-num" value="<%= params[:page] || 1 %>">
+<input type="hidden" class="total-pages" value="<%= @images.total_pages %>"></input>
+
 <ul class="image-list">
   <%= render "image_items", images: @images %>
 </ul>

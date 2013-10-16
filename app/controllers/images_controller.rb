@@ -45,8 +45,11 @@ class ImagesController < ApplicationController
       @title = "Most Recent Images"
     end
     
+    expires_now
+    
     if request.xhr?
-      render partial: "image_items", locals: { images: @images}
+      # render json: @images
+      render partial: "image_items", locals: { images: @images}, status: 200
     else
       render :index
     end
