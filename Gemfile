@@ -33,6 +33,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'backbone-on-rails'
+  gem "letter_opener"
 end
 
 group :test do
@@ -51,6 +52,8 @@ gem 'aws-sdk'
 gem 'figaro'
 
 gem 'jquery-ui-rails'
+
+gem "friendly_id", "~> 4.0.10"
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
