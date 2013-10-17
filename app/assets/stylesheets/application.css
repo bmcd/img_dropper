@@ -732,6 +732,9 @@ label {
 	padding: 15px;
 	vertical-align: middle;
 }
+.left img {
+	max-width: 100%;
+}
 
 .left:hover .hover-vote {
 	display: block;

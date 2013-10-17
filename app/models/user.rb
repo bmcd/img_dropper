@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   has_many :user_comment_votes
   has_many :user_image_votes
   has_many :password_resets
-  
+
   def send_password_reset_email
     token = password_resets.create!
     UserMailer.password_reset(self, token).deliver
