@@ -68,7 +68,7 @@ $(document).ready(function() {
   })
 
 
-  $("#new-image").on("submit", function (event) {
+  $("body").on("submit", function (event) {
     $(this).children(":submit").attr("disabled", true);
   })
 
@@ -206,11 +206,11 @@ function startLoggedOutListening() {
   })
 
   $("body").on("ajax:error", ".login-form", function(event, data) {
-    $(this).parent().replaceWith(data.responseText);
+    $(this).parent().html(data.responseText);
   })
 
   $("body").on("ajax:error", ".new_user", function(event, data) {
-    $(this).parent().replaceWith(data.responseText);
+    $(this).parent().html(data.responseText);
   })
 
   $("body").on("ajax:error", function(event, data) {

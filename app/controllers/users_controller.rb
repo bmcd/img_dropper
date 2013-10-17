@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       end
     else
       if request.xhr?
-        render partial: "users/signup"
+        render partial: "users/signup", status: 422
       else
         render :new
       end
