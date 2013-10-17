@@ -384,13 +384,34 @@ ul ul {
   margin-bottom: 15px;
 /*  margin: 0 30px 15px 0;*/
   text-align: center;
-  color: #eee;
+  color: #ecf0f1;
 }
 
 #new-image-centered {
+  padding: 15px;
+  background: #34495e;
+  margin-bottom: 15px;
   margin: 0 auto;
   float: none;
   width: 350px;
+}
+
+.login-page-solo {
+	text-align: center;
+	background: #34495e;
+  margin: 0 auto;
+  float: none;
+  width: 250px;
+	padding: 15px;
+	padding-bottom: 20px;
+}
+
+.login-page-solo h1 {
+	color: #ecf0f1;
+}
+
+.login-page-solo input[type=submit] {
+  margin: 10px 0;
 }
 
 .flash-notice {
