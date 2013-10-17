@@ -1,11 +1,11 @@
-<h1>Reset Password for <%= @user.email %></h1>
+<div class="login-page-solo reset">
+	<h1>Reset Password</h1>
 
-<%= form_for @user do |f| %>
-	<label>Password:
-		<input type="password" name="user[password]">
-	</label>
-	<label>Confirm Password:
-		<input type="password" name="user[password_confirmation]">
-	</label>
-	<%= f.submit "Save" %>
-<% end %>
+	<%= form_for @user do |f| %>
+		<label for="password-reset">Password:</label>
+			<input type="password" name="user[password]" id="password-reset"><br>
+		<label for="password-confirmation-reset">Confirm Password:</label>
+			<input type="password" name="user[password_confirmation]" id="password-confirmation-reset"><br>
+		<%= f.submit "Save" %>
+	<% end %>
+</div>

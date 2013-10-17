@@ -24,6 +24,8 @@ $(document).ready(function() {
   } else {
     startLoggedOutListening();
   }
+	
+	$(".login-page-solo form").removeAttr("data-remote")
 
   $(window).scroll(function(event) {
   	if (distanceFromBottom() < 500 && !requestingNextPage) {

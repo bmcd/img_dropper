@@ -408,10 +408,20 @@ ul ul {
 
 .login-page-solo h1 {
 	color: #ecf0f1;
+	padding-bottom: 25px;
 }
 
-.login-page-solo input[type=submit] {
-  margin: 10px 0;
+.login-page-solo h3 {
+	color: #ecf0f1;
+}
+
+.login-page-solo input {
+  margin-bottom: 10px;
+}
+
+.login-page-solo.reset {
+	width: 275px;
+	color: #ecf0f1;
 }
 
 .flash-notice {
