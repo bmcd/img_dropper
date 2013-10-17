@@ -752,4 +752,5 @@ label {
   height: 60px;
   background: #c0392b;
 	font-size: 36pt;
+	z-index: 210;
 }
