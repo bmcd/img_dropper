@@ -56,11 +56,6 @@ $(document).ready(function() {
 					},
 					error: function(data) {
 						console.log("error");
-						// console.log(data);
-						// $("#ajax-loader").hide();
-						// $(".image-list").append(data.responseText);
-						// $(".page-num").val(currentPage + 1);
-						// requestingNextPage = false;	
 					}
 				})
 			}
@@ -81,7 +76,7 @@ $(document).ready(function() {
     }
   });
 
-  $(".image-list").on("ajax:success", ".image-square", function(event, data) {
+  $(".image-list").on("ajax:success", "a", function(event, data) {
     showImage(data);
   })
 

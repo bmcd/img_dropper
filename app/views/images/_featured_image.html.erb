@@ -1,0 +1,10 @@
+<div class="featured_image">
+	<div class="left">
+	<%= link_to image_tag((image.image_content_type == "image/gif" ? image.image.url : image.image.url(:small))), image_url(image), remote: true %>
+	<div class="hover-vote"><%= render "vote_box", model: image, up_url: upvote_image_url(image), down_url: downvote_image_url(image), votes: image.votes %></div>
+	</div>
+	<div class="right">
+		<h2><%= image.title || "Untitled Image" %></h2>
+		<p><%= image.description || "This image schould probably have a description if it's going to be our featured image." %></p>
+	</div>
+</div>

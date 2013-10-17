@@ -31,11 +31,14 @@ class ImagesController < ApplicationController
 
   def index
     @user = User.new(email: params[:email], password: params[:password])
+    page_number = params[:page] || 1
     @images = Image.select("images.*, COALESCE(SUM(user_image_votes.vote), 0) AS votes")
       .joins("LEFT OUTER JOIN user_image_votes ON user_image_votes.image_id = images.id")
       .group("images.id")
       .order("votes DESC, images.created_at DESC")
-      .page(params[:page] || 1)
+      .page(page_number)
+      .per((request.xhr? ? 24 : 25))
+      .padding((request.xhr? ? 1 : 0))
 
     if current_user
       @recent_images = current_user.images.order("created_at desc").limit(5)

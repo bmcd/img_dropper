@@ -1,3 +1,7 @@
+<% if images.length == 25 %>
+	<%= render "featured_image", image: @images.shift %>
+<% end %>
+
 <% images.each do |image| %>
   <li>
     <%= link_to image_tag(image.image.url(:thumb)), image_url(image), class: "image-square", remote: true %>

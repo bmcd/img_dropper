@@ -710,3 +710,30 @@ label {
 	text-align: center;
 	display: none;
 }
+
+.featured_image {
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	border-bottom: 1px solid #34495e;
+}
+
+.featured_image > .left {
+	position: relative;
+	display: inline-block;
+	width: 300px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.featured_image > .right {
+	display: inline-block;
+	width: 230px;
+	padding: 15px;
+	vertical-align: middle;
+}
+
+.left:hover .hover-vote {
+	display: block;
+/*	top: 34px;*/
+}
