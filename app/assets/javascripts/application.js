@@ -17,23 +17,23 @@
 $(document).ready(function() {
 	var requestingNextPage = false;
 	var currentPageNumber = 1;
-	
+
   startDNDListening();
   if ($(".user-button").length !== 0) {
     startLoggedInListening();
   } else {
     startLoggedOutListening();
   }
-	
+
 	$(".login-page-solo form").removeAttr("data-remote")
 
   $(window).scroll(function(event) {
   	if (distanceFromBottom() < 500 && !requestingNextPage) {
   		requestingNextPage = true;
-			
+
 			var currentPage = parseInt($(".page-num").val());
 			var totalPages = parseInt($(".total-pages").val());
-			
+
 			if (currentPage < totalPages) {
 				$.ajax({
 					url: "/images",
@@ -119,10 +119,19 @@ function showOverlay($target, $parent) {
   $target.show();
   $parent.children(".transparent-background").show();
   $parent.fadeTo(120, 1);
+	var $button = $("<button class='exit-button'>X</button>");
+	$parent.append($button);
+	$button.on("click", function(event) {
+		hideOverlay($parent);
+	});
+	$(window).on("keydown", function(event) {
+		if (event.keyCode === 27) {
+			hideOverlay($parent);
+		}
+	})
   $(window).on('resize', function() {
-    console.log("firing, new height: ", $(window).height())
     $parent.height($(window).height());
-  })
+  });
 }
 
 function hideOverlay($parent) {
@@ -131,6 +140,8 @@ function hideOverlay($parent) {
     $("body").removeClass("noscroll")
   });
   $(window).off("resize");
+	$(".exit-button").remove();
+	$(window).off("keydown");
 }
 
 function startLoggedInListening() {

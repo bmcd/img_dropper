@@ -740,3 +740,15 @@ label {
 	display: block;
 /*	top: 34px;*/
 }
+
+.exit-button {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 15px;
+  height: 15px;
+  background: #c0392b;
+}
