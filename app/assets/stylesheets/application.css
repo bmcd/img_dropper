@@ -432,6 +432,7 @@ ul ul {
   background: #2ecc71;
   color: #ecf0f1;
   display: none;
+	z-index: 103;
 }
 
 .flash-notice p {
