@@ -7,6 +7,8 @@
   <%= text_field_tag(:email, email) %>
   <%= label_tag(:password, "Password:") %>
   <%= password_field_tag(:password, password) %><br>
+	<label class="remember-me">
+		<input type="checkbox" name="remember_me">Remember Me</label>
 
   <%= submit_tag("Log In") %>
 <% end %>

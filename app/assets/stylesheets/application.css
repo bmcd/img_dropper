@@ -424,6 +424,17 @@ ul ul {
 	color: #ecf0f1;
 }
 
+.remember-me {
+	font-size: 10pt;
+}
+
+.login-page .remember-me > input, .login-page-solo .remember-me > input {
+	display: inline;
+	width: auto;
+	display: inline;
+	margin-bottom: 0;
+}
+
 .flash-notice {
   position: fixed;
   top: 47px;
@@ -530,7 +541,7 @@ label {
   display: none;
   text-align: center;
   background: #34495e;
-  margin: 25% auto;
+  margin: 17% auto;
   padding: 15px;
   z-index: 200;
   color: #ecf0f1;
@@ -543,7 +554,7 @@ label {
   display: none;
   text-align: center;
   background: #34495e;
-  margin: 25% auto;
+  margin: 15% auto;
   padding: 15px;
   z-index: 200;
   color: #ecf0f1;
