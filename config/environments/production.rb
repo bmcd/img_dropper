@@ -65,7 +65,10 @@ ImgurClone::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   
-  config.action_mailer.default_url_options = { host: "imgdropper.com"}
+  config.action_mailer.default_url_options = { host: "imgdropper.com" }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
 
   #AWS
   config.paperclip_defaults = {
