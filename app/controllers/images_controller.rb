@@ -31,7 +31,7 @@ class ImagesController < ApplicationController
 
   def index
     @user = User.new(email: params[:email], password: params[:password])
-    @images = Image.select("images.*, SUM(user_image_votes.vote) AS votes")
+    @images = Image.select("images.*, COALESCE(SUM(user_image_votes.vote), 0) AS votes")
       .joins("LEFT OUTER JOIN user_image_votes ON user_image_votes.image_id = images.id")
       .group("images.id")
       .order("votes DESC, images.created_at DESC")
