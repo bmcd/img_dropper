@@ -28,8 +28,8 @@ $(document).ready(function() {
 	$(".login-page-solo form").removeAttr("data-remote")
 
   $(window).scroll(function(event) {
-  	if (distanceFromBottom() < 500 && !requestingNextPage) {
-  		requestingNextPage = true;
+    if (distanceFromBottom() < 500 && !requestingNextPage) {
+       requestingNextPage = true;
 
 			var currentPage = parseInt($(".page-num").val());
 			var totalPages = parseInt($(".total-pages").val());
@@ -59,12 +59,13 @@ $(document).ready(function() {
 					}
 				})
 			}
-  	}
+    }
   })
 
 
   $("body").on("submit", function (event) {
-    $(this).children(":submit").attr("disabled", true);
+		console.log(event.target);
+    $(event.target).children(":submit").attr("disabled", true);
   })
 
   $('#new-image :file').bind('change', function() {

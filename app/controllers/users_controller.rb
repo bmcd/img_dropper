@@ -17,13 +17,13 @@ class UsersController < ApplicationController
       end
     else
       if request.xhr?
-        render partial: "users/signup", status: 422
+        render partial: "users/signup", locals: { user: @user }, status: 422
       else
-        render :new
+        render :new, locals: { user: @user }
       end
     end
   end
-  
+
   def update
     @user = User.find(params[:id])
     @user.password = params[:user][:password]
