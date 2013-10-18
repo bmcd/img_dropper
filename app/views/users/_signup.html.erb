@@ -1,6 +1,6 @@
 <%= user.errors.full_messages.to_sentence if user %>
 
-<%= form_for @user, remote: true do |f| %>
+<%= form_for user, remote: true do |f| %>
   <%= label_tag(:email, "Email:") %>
   <%= f.text_field(:email) %>
   <%= label_tag(:password, "Password:") %>

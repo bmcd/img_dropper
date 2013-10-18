@@ -55,7 +55,7 @@ $(document).ready(function() {
 						}
 					},
 					error: function(data) {
-						console.log("error");
+						console.log("Error loading next page.");
 					}
 				})
 			}
@@ -87,6 +87,8 @@ $(document).ready(function() {
   $(".transparent-background.show").on("click", function() {
     hideOverlay($(".show-page-holder"));
   })
+
+
 
   if ($(".flash-notice p").html() !== "") {
     $(".flash-notice").slideDown("slow", function() {
@@ -158,12 +160,13 @@ function startLoggedInListening() {
     $(this).after(data);
   })
 
-  $("body").on("ajax:success", ".comment-list .comment-form", function(event, data) {
-    $li = $("<li></li>").html(data)
-    $(this).closest('li').children('ul').prepend($li);
-    $(this).siblings(".comment-reply").off("click.disable");
-    $(this).remove()
-  })
+  $("body").on("ajax:success", ".comment-list .comment-form",
+    function(event, data) {
+      $li = $("<li></li>").html(data)
+      $(this).closest('li').children('ul').prepend($li);
+      $(this).siblings(".comment-reply").off("click.disable");
+      $(this).remove()
+    })
 
   $(".content").on("ajax:success", ".comment-form", function(event, data) {
     $li = $("<li></li>").html(data)
@@ -233,7 +236,18 @@ function startDNDListening() {
   dropmask.addEventListener("dragleave", dragExit, false);
   dropbox.addEventListener("dragover", dragOver, false);
   dropbox.addEventListener("drop", drop, false);
+	$(document).on("mousedown", function(event) {
+    dropmask.removeEventListener("dragleave", dragExit, false);
+    dropbox.removeEventListener("dragover", dragOver, false);
+    dropbox.removeEventListener("drop", drop, false);
+		setTimeout(function() {
+      dropmask.addEventListener("dragleave", dragExit, false);
+      dropbox.addEventListener("dragover", dragOver, false);
+      dropbox.addEventListener("drop", drop, false);
+		}, 2000)
+	})
 }
+
 
 function dragExit(event) {
   event.stopPropagation();
@@ -254,12 +268,14 @@ function drop(event) {
   event.stopPropagation();
   event.preventDefault();
 
-  $(".droppable div p").html("Uploading image...");
-
   var files = event.dataTransfer.files;
 
   if (files.length == 1) {
     handleFiles(files);
+		$(".droppable div p").html("Uploading image...");
+  } else {
+    $(".droppable").removeClass("showing");
+    $("#dropmask").removeClass("showing");
   }
 }
 
@@ -268,13 +284,13 @@ function handleFiles(files) {
   if (file.size < 1048576) {
     uploadFile(file);
   } else {
-    showFileTooBig();
+    showError("File size must be under 1MB.");
   }
 }
 
-function showFileTooBig() {
+function showError(errorString) {
   $(".droppable").addClass("showing").addClass("error");
-  $(".droppable div p").html("File size must be under 1 MB");
+  $(".droppable div p").html(errorString);
 
   setTimeout(function () {
     $(".droppable").removeClass("showing").removeClass("error");
@@ -301,6 +317,9 @@ function uploadFile(file) {
       } else {
         window.location = "/images/" + data["id"] + "/edit?authorization_token=" + data["authorization_token"];
       }
-    }
+    },
+		error: function(data) {
+			showError("Invalid file type.");
+		}
   })
 }
