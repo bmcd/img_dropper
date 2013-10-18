@@ -30,6 +30,10 @@ class Image < ActiveRecord::Base
   validates_attachment :image, presence: true,
     size: { in: 0..1.megabytes }
 
+  validates_attachment_content_type :image,
+    :content_type => /^image\/(jpg|jpeg|pjpeg|png|x-png|gif)$/,
+    :message => 'file type is not allowed (only jpeg/png/gif images)'
+
   def ensure_authorization_token
     self.authorization_token ||= SecureRandom::urlsafe_base64(16)
   end
