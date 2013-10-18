@@ -1,3 +1,724 @@
 // Place all the styles related to the Images controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$clouds: #ecf0f1;
+$overlay: rgba(0, 0, 0, 0.7);
+$lightbox: rgba(0, 0, 0, 0.2);
+$error: rgba(99, 9, 9, 0.8);
+$exit: #c0392b;
+$topbar: #2c3e50;
+$topbarhover: #34495e;
+$upload: #34495e;
+$list: #bdc3c7;
+$login: #34495e;
+
+/* BODY AND GENERAL STYLING */
+body, html {
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
+  background: $clouds;
+  position: relative;
+  font-size: 12pt;
+
+	&.noscroll {
+	  overflow: hidden;
+	  margin-right: 16px;
+	}
+}
+
+ul ul {
+  margin-left: 15px;
+}
+
+a {
+  color: $clouds;
+}
+
+.group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+label {
+  color: $clouds;
+  font-size: 16pt;
+  font-weight: bold;
+  padding-bottom: 15px;
+  display: block;
+}
+
+h1 {
+  font-size: 24pt;
+  font-weight: bold;
+  padding: 10px;
+}
+
+h2 {
+  font-size: 18pt;
+  font-weight: bold;
+  padding-bottom: 10px;
+  padding-right: 5px;
+}
+
+h3 {
+  font-size: 16pt;
+  font-weight: bold;
+  padding-bottom: 10px;
+  padding-right: 5px;
+  padding-top: 10px;
+}
+
+h4 {
+  font-size: 12pt;
+}
+
+/* CONTENT */
+
+div.content {
+  padding-top: 57px;
+  width: 940px;
+  margin: 0 auto;
+  min-height: 100%;
+}
+
+/* OVERLAYS */
+
+.show-page-holder {
+  display: none;
+  position: fixed;
+  background: $overlay;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.login-overlay {
+  display: none;
+  position: fixed;
+  background: $overlay;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  z-index: 198;
+}
+
+.transparent-background {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  z-index: 100;
+
+	&.login {
+	  z-index: 199;
+	}
+}
+
+.nested-scroll-fix {
+  position: relative;
+  margin: 50px auto;
+  width: 924px;
+  min-height: 100%%;
+  height: 100%;
+  z-index: 102;
+  overflow: hidden;
+}
+
+.nested-show-page {
+  position: relative;
+  width: 940px;
+  min-height: 90%;
+  height: 90%;
+  z-index: 102;
+  overflow-y: scroll;
+  background: $lightbox;
+
+	&.link-box {
+	  color: $clouds;
+	  margin-top: 30px;
+	}
+
+	&.image-show {
+	  color: $clouds;
+	}
+
+	& > .vote-box {
+	  clear: both;
+	  padding: 0 20px;
+	  color: $clouds;
+	}
+}
+
+.exit-button {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 60px;
+  height: 60px;
+  background: $exit;
+	font-size: 36pt;
+	z-index: 210;
+	opacity: 0.8;
+}
+
+/* DRAG AND DROP RELATED ELEMENTS */
+
+.droppable {
+  display: none;
+  background: #333;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  z-index: 102;
+
+	&.showing {
+	  display: block;
+	}
+
+	&.error {
+	  background: $error;
+	}
+
+	div {
+	  margin: auto;
+	  width: 690px;
+	  padding-top: 30%;
+	}
+
+	div p {
+	  color: $clouds;
+	  font-size: 40pt;
+	  text-align: center;
+	}
+}
+
+#dropmask {
+  display: none;
+  z-index: 103;
+
+	&.showing {
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	  display: block;
+	}
+}
+
+/* MAIN IMAGE LIST */
+
+.image-list {
+  padding: 15px;
+  width: 600px;
+  float: left;
+  background: $list;
+  padding-right: 6px;
+
+	& > li {
+		position: relative;
+	  float: left;
+	  padding: 0 10px 10px 0;
+
+		&:hover .hover-vote {
+	    display: block;
+	  }
+	}
+}
+
+/* FEATURED IMAGE */
+
+.featured-image {
+	position: relative;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	border-bottom: 1px solid #34495e;
+
+	.featured-tag {
+		position: absolute;
+		top: -15px;
+		right: -15px;
+		background: $topbar;
+		color: $clouds;
+		padding: 5px 5px 5px 5px;
+		font-size: 10pt;
+	}
+
+	.left {
+		position: relative;
+		display: inline-block;
+		width: 300px;
+		vertical-align: middle;
+		text-align: center;
+
+		img {
+				max-width: 100%;
+		}
+		&:hover .hover-vote {
+			display: block;
+		}
+	}
+
+	.right {
+		display: inline-block;
+		width: 230px;
+		padding: 15px;
+		vertical-align: middle;
+	}
+}
+
+/* USER IMAGE LIST */
+
+.user-image-list {
+  padding: 15px;
+  background: $list;
+  width: 600px;
+  margin: 0 auto;
+}
+
+.user-show-title {
+  text-align: center;
+}
+
+.user-image-list-item {
+  clear: left;
+  padding-bottom: 15px;
+  float: left;
+  position: relative;
+}
+
+.user-image-list-img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.user-image-list-body {
+  display: inline-block;
+  vertical-align: middle;
+  width: 400px;
+}
+
+.user-image-buttons {
+  float: right;
+  padding: 5px;
+  display: inline;
+}
+
+.user-image-list-buttons {
+  padding: 5px;
+  display: block;
+  float: right;
+}
+
+.user-image-list-buttons-holder {
+  position: absolute;
+  width: 100px;
+  top: 0;
+  right: 0;
+}
+
+//.show-page-holder .user-image-list {
+//  float: none;
+//  margin: 0 auto;
+//}
+
+/* IMAGE SHOW PAGE */
+
+div.image-show {
+  padding: 15px;
+  float: left;
+  width: 600px;
+
+	p {
+	  padding: 5px;
+	  padding-right: 40px;
+	}
+}
+
+.link-box {
+  padding-top: 15px;
+  float: left;
+  width: 280px;
+
+	input {
+	  width: 100%;
+	}
+}
+
+.edit-form {
+  clear: both;
+}
+
+// For voteboxes not in a lightbox
+.content > .vote-box {
+  clear: both;
+  padding: 0 20px;
+}
+
+/* COMMENTS */
+
+.comment-form {
+  clear: both;
+  padding: 15px;
+}
+
+.comment-list {
+  padding: 15px;
+}
+
+.comment-holder {
+  padding: 5px;
+}
+
+.comment-body {
+  background: $clouds;
+  padding: 8px;
+  border-bottom: 1px solid #999;
+}
+
+.comment-text {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 800px;
+  padding-left: 5px;
+}
+
+.comment-links {
+  background: $clouds;
+  padding: 2px;
+}
+
+.comment-links a {
+  font-size: 9pt;
+  color: #333;
+  text-decoration: none;
+  padding: 0 5px;
+}
+
+.comment-links a:hover {
+  color: $clouds;
+}
+
+.comment-list .vote-box {
+  clear: both;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* UPLOAD IMAGE FORM */
+
+.file-field {
+  display: inline;
+  padding-top: 5px;
+}
+
+.new_image.highlighted {
+  padding: 10px;
+  border: 5px solid $clouds;
+}
+
+.new_image {
+  padding: 15px;
+  background: #34495e;
+  margin-bottom: 15px;
+  text-align: center;
+  color: $clouds;
+}
+
+#new-image-centered {
+  padding: 15px;
+  background: #34495e;
+  margin-bottom: 15px;
+  margin: 0 auto;
+  float: none;
+  width: 350px;
+}
+
+/* LOGIN AND SIGNUP PAGES */
+
+.login-page-solo {
+	text-align: center;
+	background: #34495e;
+  margin: 0 auto;
+  float: none;
+  width: 250px;
+	padding: 15px;
+	padding-bottom: 20px;
+}
+
+.login-page-solo h1 {
+	color: $clouds;
+	padding-bottom: 25px;
+}
+
+.login-page-solo h3 {
+	color: $clouds;
+}
+
+.login-page-solo input {
+  margin-bottom: 10px;
+}
+
+.login-page-solo.reset {
+	width: 275px;
+	color: $clouds;
+}
+
+.remember-me {
+	font-size: 10pt;
+}
+
+.login-page .remember-me > input, .login-page-solo .remember-me > input {
+	display: inline;
+	width: auto;
+	display: inline;
+	margin-bottom: 0;
+}
+
+.login-page input, .signup-page input {
+  display: inline-block;
+  width: 180px;
+  margin-bottom: 15px;
+}
+
+.login-page input[type=submit], .signup-page input[type=submit] {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  display: inline-block;
+  width: 60px;
+}
+
+
+.login-page {
+  position: relative;
+  display: none;
+  text-align: center;
+  background: #34495e;
+  margin: 17% auto;
+  padding: 15px;
+  z-index: 200;
+  color: $clouds;
+  width: 250px;
+  font-size: 12px;
+}
+
+.signup-page {
+  position: relative;
+  display: none;
+  text-align: center;
+  background: #34495e;
+  margin: 15% auto;
+  padding: 15px;
+  z-index: 200;
+  color: $clouds;
+  width: 250px;
+  font-size: 12px;
+}
+
+.signup-link {
+
+}
+
+.signup-page.show, .login-page.show {
+  display: block;
+}
+
+/* TOP BAR */
+
+.top-bar a {
+  color: $clouds;
+  text-decoration: none;
+  padding: 15px;
+  height: 17px;
+  display: block;
+}
+
+.top-bar {
+  background: $topbar;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-width: 640px;
+  z-index: 99;
+}
+
+.top-bar li {
+
+}
+
+.top-bar button {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+}
+
+.top-bar li:hover a {
+  background: #34495e;
+}
+
+.top-bar li:hover .logout {
+  background: #34495e;
+}
+
+.top-left > li {
+  float: left;
+}
+
+.top-right > li {
+  float: right;
+  position: relative;
+}
+
+/* FLASH NOTICE */
+
+.flash-notice {
+  position: fixed;
+  top: 47px;
+  left: 0;
+  width: 100%;
+  background: #2ecc71;
+  color: $clouds;
+  display: none;
+	z-index: 103;
+}
+
+.flash-notice p {
+  margin: 0 auto;
+  padding: 5px;
+  z-index: 99;
+}
+
+/* VOTING */
+
+.upvote {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 15px;
+  height: 15px;
+  background: #27ae60;
+  opacity: 0.4;
+}
+
+.upvote.selected {
+  background: #2ecc71;
+  opacity: 1;
+}
+
+.upvote.selected:hover {
+  background: #27ae60;
+  opacity: 0.4;
+}
+
+.downvote {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 15px;
+  height: 15px;
+  background: #c0392b;
+  opacity: 0.4;
+}
+
+.downvote.selected {
+  background: #e74c3c;
+  opacity: 1;
+}
+
+.downvote.selected:hover {
+  background: #c0392b;
+  opacity: 0.4;
+}
+
+.upvote:hover, .downvote:hover {
+  opacity: 1;
+  font-weight: bold;
+}
+
+.vote-button-holder {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.vote-number {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.hover-vote {
+  padding: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #95a5a6;
+  opacity: 0.85;
+  color: $clouds;
+  display: none;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+  float: right;
+  position: fixed;
+  margin: 0 30px 15px 640px;
+  width: 271px;
+}
+
+.sidebar-image-list {
+  padding: 10px;
+  width: 251px;
+  background: $list;
+}
+
+.sidebar-image-list-item {
+  vertical-align: middle;
+  padding: 5px 10px;
+}
+
+.sidebar-image-list-img {
+  width: 60px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.sidebar-image-list-body {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 15px;
+  width: 152px;
+}
+
+.sidebar-image-list-body a {
+ text-decoration: none;
+ color: $clouds;
+}
+
+.sidebar-image-list h3 {
+  text-align: center;
+}
+
+/* PAGINATION */
+
+.pagination {
+	clear: both;
+	text-align: center;
+}
+
+#ajax-loader {
+	text-align: center;
+	display: none;
+}
