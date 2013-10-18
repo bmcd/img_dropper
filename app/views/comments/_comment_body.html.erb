@@ -7,7 +7,7 @@
     </div>
     <% user = comment.user %>
   <div class="comment-links">
-    <%= link_to user.email, user_url(user) %>
+    <%= link_to user.email.gsub("@", " [at] ").gsub(".com", " [dot] com"), user_url(user) %>
     <%= link_to "Reply", new_image_comment_url(image_id: image_id, parent_comment_id: comment.id), class: "comment-reply", "data-remote" => "true" %>
   </div>
 </section>

@@ -1,4 +1,4 @@
-<header class="user-show-title"><h1><%= @user.email %>'s Images</h1></header>
+<header class="user-show-title"><h1><%= @user.email.gsub("@", " [at] ").gsub(".com", " [dot] com") %>'s Images</h1></header>
 
 
 <ul class="user-image-list group">

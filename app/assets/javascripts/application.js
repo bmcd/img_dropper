@@ -65,6 +65,9 @@ $(document).ready(function() {
 
   $("body").on("submit", function (event) {
     $(event.target).children(":submit").attr("disabled", true);
+		setTimeout(function() {
+			$(event.target).children(":submit").removeAttr("disabled");
+		}, 3000)
   })
 
   $('#new-image :file').bind('change', function() {
