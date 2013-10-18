@@ -64,7 +64,6 @@ $(document).ready(function() {
 
 
   $("body").on("submit", function (event) {
-		console.log(event.target);
     $(event.target).children(":submit").attr("disabled", true);
   })
 
