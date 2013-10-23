@@ -23,7 +23,7 @@
 * Upvote and downvote comments.
 
 ##Technologies Used
-The following technologies were used to build Sunsingnim:
+The following technologies were used:
 * Ruby on Rails
 * JQuery
 * JavaScript
